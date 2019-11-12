@@ -1,4 +1,4 @@
-package topic2;
+package leetcode.topic_2_两数之和;
 
 public class ListNode {
     int val;
