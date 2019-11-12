@@ -2,7 +2,8 @@ package art;
 
 import java.awt.*;
 
-public class Test {
+//数值与位运算符
+public class Number {
     public static void main(String[] args) {
 //        System.out.println(Integer.class.getName());
 //        System.out.println(int.class.getName());
@@ -36,7 +37,6 @@ public class Test {
 
 
         System.out.println(Integer.MAX_VALUE + Integer.MAX_VALUE);
-
 
 
         System.out.println(Integer.toHexString(-1));
