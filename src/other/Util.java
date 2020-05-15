@@ -1,4 +1,4 @@
-package art;
+package other;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Util {
     public static void main(String[] args) {
-        File file = new File("D:\\old\\OTA压测_摄像头OTA升级成功率_20200509200322\\OTA压测_摄像头OTA升级成功率_20200509200322\\fail_logs");
+        File file = new File("D:\\old\\OTA压测_摄像头OTA升级成功率_20200513212442\\OTA压测_摄像头OTA升级成功率_20200513212442\\fail_logs");
         File[] files = file.listFiles();
         List<Integer> integers = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
