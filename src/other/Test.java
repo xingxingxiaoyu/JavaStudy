@@ -1,9 +1,22 @@
 package other;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 public class Test {
     public static void main(String[] args) {
-        testA();
-        testB();
+//        testA();
+//        testB();
+        try {
+            String aa_aa = URLEncoder.encode("aa aa", "utf-8");
+            String decode = URLDecoder.decode(aa_aa, "utf-8");
+            System.out.println(aa_aa);
+            System.out.println(decode);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void testA() {
