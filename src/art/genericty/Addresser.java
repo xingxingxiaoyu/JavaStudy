@@ -48,7 +48,7 @@ public class Addresser {
 
     public static void printBytes(long objectAddress, int num) {
         for (long i = 0; i < num; i++) {
-            int cur = unsafe.getByte(objectAddress + i);
+            byte cur = unsafe.getByte(objectAddress + i);
             System.out.print((char) cur);
         }
         System.out.println();

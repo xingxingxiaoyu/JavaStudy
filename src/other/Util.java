@@ -20,6 +20,5 @@ public class Util {
 //        for (int i = 0; i < a.length; i++) {
 //            System.out.println(a[i]);
 //        }
-        System.out.println(197960614 % 1024 + 1166);
     }
 }
