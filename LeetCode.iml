@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="asm-commons-7.1" level="project" />
     <orderEntry type="library" name="asm-util-7.1" level="project" />
+    <orderEntry type="library" name="asm-7.1-sources" level="project" />
   </component>
 </module>

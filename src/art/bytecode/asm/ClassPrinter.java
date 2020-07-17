@@ -32,12 +32,12 @@ public class ClassPrinter extends ClassVisitor {
     }
 
     public static void main(String[] args) throws IOException {
-        ClassPrinter classPrinter = new ClassPrinter();
-
-        InputStream cl = ClassLoader.getSystemResourceAsStream(Simple.class.getName().replace(".", "/") + ".class");
-        ClassReader classReader = new ClassReader(cl);
-
-        classReader.accept(classPrinter, 0);
+//        ClassPrinter classPrinter = new ClassPrinter();
+//
+//        InputStream cl = ClassLoader.getSystemResourceAsStream(Simple.class.getName().replace(".", "/") + ".class");
+//        ClassReader classReader = new ClassReader(cl);
+//
+//        classReader.accept(classPrinter, 0);
 
         ASMifier.main(new String[]{TimeMethod.class.getName()});
     }
