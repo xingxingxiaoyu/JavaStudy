@@ -44,14 +44,37 @@ public class Test {
 //        }
 //        System.out.println(System.currentTimeMillis() - l);
 //    }
-    public static void main(String[] args) {
-        a();
+//    public static void main(String[] args) {
+//        a();
+//    }
+//
+//    private static void a() {
+//        RuntimeException runtimeException = new RuntimeException("");
+//
+//        System.out.println(runtimeException.getClass().getName());
+//        System.out.println(Arrays.toString(runtimeException.getStackTrace()));
+//    }
+
+    private static void dealLocalMessage(String data) {
+        try {
+
+            if (data == null) {
+                return;
+            }
+            if (data.contains("clear")) {
+            } else {
+                int logIndex = data.indexOf("log");
+                if (logIndex >= 0) {
+                    int time = Integer.parseInt(data.substring(logIndex + 4));
+                    System.out.println(time);
+
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 
-    private static void a() {
-        RuntimeException runtimeException = new RuntimeException("");
-
-        System.out.println(runtimeException.getClass().getName());
-        System.out.println(Arrays.toString(runtimeException.getStackTrace()));
+    public static void main(String[] args) {
+        dealLocalMessage("log:10");
     }
 }
