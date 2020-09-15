@@ -55,6 +55,7 @@ public class LambdaDemo {
         System.out.println(System.currentTimeMillis() - startTime2);
 
         testNormal2();
+//        testNormal2();
 
     }
 }

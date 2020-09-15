@@ -5,6 +5,8 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Test {
     //    public static void main(String[] args) {
@@ -55,26 +57,48 @@ public class Test {
 //        System.out.println(Arrays.toString(runtimeException.getStackTrace()));
 //    }
 
-    private static void dealLocalMessage(String data) {
-        try {
-
-            if (data == null) {
-                return;
-            }
-            if (data.contains("clear")) {
-            } else {
-                int logIndex = data.indexOf("log");
-                if (logIndex >= 0) {
-                    int time = Integer.parseInt(data.substring(logIndex + 4));
-                    System.out.println(time);
-
-                }
-            }
-        } catch (Exception e) {
-        }
-    }
+//    private static void dealLocalMessage(String data) {
+//        try {
+//
+//            if (data == null) {
+//                return;
+//            }
+//            if (data.contains("clear")) {
+//            } else {
+//                int logIndex = data.indexOf("log");
+//                if (logIndex >= 0) {
+//                    int time = Integer.parseInt(data.substring(logIndex + 4));
+//                    System.out.println(time);
+//
+//                }
+//            }
+//        } catch (Exception e) {
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        dealLocalMessage("log:10");
+//    }
 
     public static void main(String[] args) {
-        dealLocalMessage("log:10");
+//        System.out.println(Integer.toHexString(Float.floatToIntBits(-3.2237332f)));
+
+//        HashMap<Object, Object> hashMap = new HashMap<>();
+//        hashMap.put(1, 1);
+//        hashMap.put(2, 5);
+//        hashMap.put(8, 123);
+//        hashMap.put(1, 123423);
+//        Iterator<Object> iterator = hashMap.values().iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
+
+//        int n = 1000;
+//        double sum = 0;
+//        for (int i = 0; i < n; i++) {
+//            sum += 1.0 / n * (i * 1.0 / n);
+//        }
+//        System.out.println(sum);
+
     }
 }
