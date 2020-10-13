@@ -99,6 +99,27 @@ public class Test {
 //            sum += 1.0 / n * (i * 1.0 / n);
 //        }
 //        System.out.println(sum);
+        System.out.println(Integer.MAX_VALUE / 1000 / 3600 / 24);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                for (int k = 0; k < 5; k++) {
+                    for (int l = 0; l < 5; l++) {
+                        for (int m = 0; m < 5; m++) {
+                            for (int n = 0; n < 5; n++) {
+                                System.out.println(String.valueOf(i + 1) +
+                                        String.valueOf(j + 1) +
+                                        String.valueOf(k + 1) +
+                                        String.valueOf(l + 1) +
+                                        String.valueOf(m + 1) +
+                                        String.valueOf(n + 1));
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
     }
 }
