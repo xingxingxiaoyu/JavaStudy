@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -99,27 +100,60 @@ public class Test {
 //            sum += 1.0 / n * (i * 1.0 / n);
 //        }
 //        System.out.println(sum);
-        System.out.println(Integer.MAX_VALUE / 1000 / 3600 / 24);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                for (int k = 0; k < 5; k++) {
-                    for (int l = 0; l < 5; l++) {
-                        for (int m = 0; m < 5; m++) {
-                            for (int n = 0; n < 5; n++) {
-                                System.out.println(String.valueOf(i + 1) +
-                                        String.valueOf(j + 1) +
-                                        String.valueOf(k + 1) +
-                                        String.valueOf(l + 1) +
-                                        String.valueOf(m + 1) +
-                                        String.valueOf(n + 1));
+//        System.out.println(Integer.MAX_VALUE / 1000 / 3600 / 24);
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                for (int k = 0; k < 5; k++) {
+//                    for (int l = 0; l < 5; l++) {
+//                        for (int m = 0; m < 5; m++) {
+//                            for (int n = 0; n < 5; n++) {
+//                                System.out.println(String.valueOf(i + 1) +
+//                                        String.valueOf(j + 1) +
+//                                        String.valueOf(k + 1) +
+//                                        String.valueOf(l + 1) +
+//                                        String.valueOf(m + 1) +
+//                                        String.valueOf(n + 1));
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        System.out.println(add(127,-123));
 
     }
+    public static int add(int a, int b) {
+        int carry = 0;            // 是否需要进位
+        while (b != 0) {
+            carry = (a & b) << 1;
+            a ^= b;
+            b = carry;
+        }
+        return a;
+    }
+
+//    private static String region(int start, int end) {
+//        return "(" + start + " ... " + end + ")";
+//    }
+//
+//    private void checkRange(final String operation, int start, int end) {
+//        if (end < start) {
+//            throw new IndexOutOfBoundsException(operation + " " +
+//                    region(start, end) + " has end before start");
+//        }
+//
+//        int len = 0;
+//
+//        if (start > len || end > len) {
+//            throw new IndexOutOfBoundsException(operation + " " +
+//                    region(start, end) + " ends beyond length " + len);
+//        }
+//
+//        if (start < 0 || end < 0) {
+//            throw new IndexOutOfBoundsException(operation + " " +
+//                    region(start, end) + " starts before 0");
+//        }
+//    }
 }
