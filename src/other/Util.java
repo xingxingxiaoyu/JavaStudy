@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Util {
     public static void main(String[] args) {
-        File file = new File("D:\\摄像头项目相关\\摄像头压测日志\\OTA压测_摄像头OTA升级成功率_20201113201812\\fail_logs");
+        File file = new File("H:\\OTA压测_摄像头OTA升级成功率_20201126202727\\fail_logs");
         File[] files = file.listFiles();
         List<Integer> integers = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
