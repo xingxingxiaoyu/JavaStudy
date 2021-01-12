@@ -1,4 +1,4 @@
-package art.methodhandler;
+package art.bytecode.lambda.methodhandler;
 
 import java.lang.invoke.*;
 import java.util.function.Consumer;

@@ -1,34 +1,69 @@
 package art.recommend;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.function.Function;
+
 /**
  * 抽象的推荐实体
  */
-public class BaseRecommend {
+public abstract class BaseRecommend {
     private static final int PREFERENCE_LENGTH = 100;
     private static final int INDEX_LENGTH = 3;
-    //描述这个推荐实体的兴趣偏向,兴趣从0-1
-    private double[] preferenceDisplay = new double[PREFERENCE_LENGTH];
+    //描述这个推荐实体的兴趣偏向,兴趣从-100~100
+    protected double[] preferenceDisplay = new double[PREFERENCE_LENGTH];
 
     /**
      * 这个推荐实体的训练成熟程度 0-1
      */
-    private float maturityGrade;
+    protected float maturityGrade;
 
     /**
      * 匹配次数，这个参数能在一定程度上反映maturityGrade
      */
-    private int matchCount = 0;
+    protected int matchCount = 0;
 
 
     /**
      * 根据两个推荐实体之间的匹配度来修正兴趣偏向
+     * 只挑选几个代表来修正，因为喜好一般是针对推荐实体的显著特征来的
      *
      * @param other 另一个推荐实体
-     * @param match 两者之间的匹配度 范围0-1
+     * @param match 两者之间的匹配度 范围-1~1
      */
     public void preferenceMatch(BaseRecommend other, float match) {
+        int[] index = getPreferenceDisplayHighIndex();
+        int[] otherIndex = other.getPreferenceDisplayHighIndex();
+        int[] mixIndex = mixIndex(index, otherIndex);
+        for (int i = 0; i < mixIndex.length; i++) {
+            maturityChange(preferenceMatchIndex(mixIndex[i], other, match));
+            other.maturityChange(other.preferenceMatchIndex(mixIndex[i], this, match));
+        }
+        matchCount++;
+        other.matchCount++;
+    }
 
+    /**
+     * 挥发函数，会降低训练成熟度，防止推荐实体训练成熟之后兴趣偏向恒定
+     */
+    protected abstract void maturityChange(int grade);
 
+    private int preferenceMatchIndex(int index, BaseRecommend other, float match) {
+        return preferenceMatchIndex(index, other.preferenceDisplay[index], match);
+    }
+
+    protected abstract int preferenceMatchIndex(int index, double otherDisplay, float match);
+
+    private int[] mixIndex(int[] index, int[] otherIndex) {
+        HashSet<Integer> integers = new HashSet<>();
+        for (int i = 0; i < index.length; i++) {
+            integers.add(index[i]);
+        }
+        for (int i = 0; i < otherIndex.length; i++) {
+            integers.add(otherIndex[i]);
+        }
+        Integer[] objects = (Integer[]) integers.toArray();
+        return Arrays.stream(objects).mapToInt(Integer::intValue).toArray();
     }
 
     /**
