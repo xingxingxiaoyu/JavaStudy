@@ -24,12 +24,13 @@ public class Class5 {
                 System.out.println(Addresser.addressOf(person));
                 System.out.println(Person.i);
                 Person.i = 100;
-                System.out.println(Person.i); } catch (Exception e) {
+                System.out.println(Person.i);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Class<?> person2 = classLoader.loadClass("art.class34.class5.Person");
             try {
-                System.out.println(Addresser.addressOf(person));
+                System.out.println("旧的person的地址" + Addresser.addressOf(person));
                 System.out.println(Person.i);
                 Person.i = 25333;
                 System.out.println(Person.i);
@@ -72,15 +73,17 @@ public class Class5 {
                 System.out.println(Addresser.addressOf(person));
                 System.out.println(Person.i);
                 Person.i = 567;
-                System.out.println(Person.i); } catch (Exception e) {
+                System.out.println(Person.i);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Class<?> person2 = classLoader.loadClass("art.class34.class5.Person");
             try {
-                System.out.println(Addresser.addressOf(person));
+                System.out.println("新的person的地址" + Addresser.addressOf(person));
                 System.out.println(Person.i);
                 Person.i = 124153;
-                System.out.println(Person.i); } catch (Exception e) {
+                System.out.println(Person.i);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Constructor<?> constructor = person.getConstructor(String.class);

@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Javap {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         System.out.println(invoke("D:\\develop\\code\\Java\\idea\\LeetCode\\out\\production\\LeetCode\\art\\bytecode\\Simple.class"));
     }
 

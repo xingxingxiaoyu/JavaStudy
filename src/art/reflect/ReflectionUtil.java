@@ -18,6 +18,18 @@ public class ReflectionUtil {
             System.out.print("class " + c1.getName());
             if (superc1 != null && superc1 != Object.class)
                 System.out.print("extends " + superc1.getName());
+            Class[] interfaces = c1.getInterfaces();
+            if (interfaces != null) {
+                System.out.print(" implements ");
+                for (int i = 0; i < interfaces.length; i++) {
+                    System.out.print(interfaces[i].getName());
+                    if (i != interfaces.length - 1) {
+                        System.out.print(",");
+                    }
+                }
+
+            }
+
             System.out.print("\n{\n");
             printConstructors(c1);
             System.out.println();
@@ -82,7 +94,7 @@ public class ReflectionUtil {
             System.out.print("  ");
             String modifiers = Modifier.toString(f.getModifiers());
 //            if (modifiers.length() > 0)
-                System.out.println(type.getName() + " " + name + ";");
+            System.out.println(type.getName() + " " + name + ";");
         }
     }
 
