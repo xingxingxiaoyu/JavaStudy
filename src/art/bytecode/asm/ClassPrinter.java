@@ -1,10 +1,6 @@
 package art.bytecode.asm;
 
-import art.bytecode.Simple;
-import art.bytecode.TimeMethod;
-import art.genericty.Student;
 import org.objectweb.asm.*;
-import org.objectweb.asm.util.ASMifier;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,13 +28,12 @@ public class ClassPrinter extends ClassVisitor {
     }
 
     public static void main(String[] args) throws IOException {
-//        ClassPrinter classPrinter = new ClassPrinter();
-//
-//        InputStream cl = ClassLoader.getSystemResourceAsStream(Simple.class.getName().replace(".", "/") + ".class");
-//        ClassReader classReader = new ClassReader(cl);
-//
-//        classReader.accept(classPrinter, 0);
+        ClassPrinter classPrinter = new ClassPrinter();
 
-        ASMifier.main(new String[]{TimeMethod.class.getName()});
+        InputStream cl = ClassLoader.getSystemResourceAsStream(AsmDemo.class.getName().replace(".", "/") + ".class");
+        ClassReader classReader = new ClassReader(cl);
+
+        classReader.accept(classPrinter, 0);
+
     }
 }
