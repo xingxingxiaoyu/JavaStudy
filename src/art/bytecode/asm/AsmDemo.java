@@ -2,9 +2,16 @@ package art.bytecode.asm;
 
 public class AsmDemo {
 
-    private String aString;
+    private static String aString = "xuyu";
+    private static int aInt = 1024;
 
-    public void testPrint(String a) {
+    public AsmDemo() {
+    }
+
+    public void testPrint(String a) throws Exception {
         System.out.println(a);
+        aString = "xuysfhskjdf";
+        throw new Exception();
+
     }
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class ReflectionUtil {
-    public static void print(Class c1) {
+    public static void printClass(Class c1) {
 
         try {
             Class superc1 = c1.getSuperclass();

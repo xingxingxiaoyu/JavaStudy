@@ -3,7 +3,6 @@ package art.bytecode.lambda.methodhandler;
 import art.reflect.ReflectionUtil;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class LambdaTest {
@@ -46,7 +45,7 @@ public class LambdaTest {
         };
 
 
-        ReflectionUtil.print(r.getClass());
+        ReflectionUtil.printClass(r.getClass());
 
         Constructor constructor = r.getClass().getDeclaredConstructor(null);
         constructor.setAccessible(true);

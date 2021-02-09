@@ -1,7 +1,11 @@
 package art.bytecode.asm;
 
+import art.class34.class5.FileClassLoader;
+import art.reflect.ReflectionUtil;
 import org.objectweb.asm.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -35,5 +39,19 @@ public class ClassPrinter extends ClassVisitor {
 
         classReader.accept(classPrinter, 0);
 
+    }
+
+    public static void saveAndPrintClass(ClassWriter classWriter, String className) throws Throwable {
+        File file = new File("D://asmClass/" + className.replace('.', '/') + ".class");
+        String parent = file.getParent();
+        File parentFile = new File(parent);
+        parentFile.mkdirs();
+        file.createNewFile();
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        fileOutputStream.write(classWriter.toByteArray());
+        fileOutputStream.flush();
+
+//        Class<?> aClass = new FileClassLoader("D://asmClass/", Object.class.getClassLoader()).loadClass(className);
+//        ReflectionUtil.printClass(aClass);
     }
 }
