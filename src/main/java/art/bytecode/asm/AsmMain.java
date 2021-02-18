@@ -2,14 +2,18 @@ package art.bytecode.asm;
 
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Type;
+import org.objectweb.asm.commons.GeneratorAdapter;
+import org.objectweb.asm.commons.Method;
 
 import java.io.FileOutputStream;
-import java.lang.reflect.Method;
+import java.io.PrintStream;
 
 import static org.objectweb.asm.Opcodes.*;
 
-public class AsmMain {
-    public static void main(String[] args) {
+public class AsmMain  extends ClassLoader implements Opcodes {
+    public static void main(String[] args) throws Exception {
         // creates a ClassWriter for the Example public class,
         // which inherits from Object
 
@@ -36,7 +40,7 @@ public class AsmMain {
         FileOutputStream fos = new FileOutputStream("Example.class");
         fos.write(code);
         fos.close();
-        Bean loader = new Bean();
+        AsmMain loader = new AsmMain();
         Class exampleClass = loader
                 .defineClass("Example", code, 0, code.length);
         exampleClass.getMethods()[0].invoke(null, new Object[]{null});
@@ -65,7 +69,7 @@ public class AsmMain {
         mg.endMethod();
         cw.visitEnd();
         code = cw.toByteArray();
-        loader = new Bean();
+        loader = new AsmMain();
         exampleClass = loader.defineClass("Example", code, 0, code.length);
         exampleClass.getMethods()[0].invoke(null, new Object[]{null});
     }
