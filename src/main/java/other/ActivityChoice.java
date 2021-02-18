@@ -3,8 +3,8 @@ package other;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//è´ªå¿ƒç®—æ³•
-//é€‰æ‹©å‡ºæœ€å¤§çš„å…¼å®¹æ´»åŠ¨ç»„
+//Ì°ÐÄËã·¨
+//Ñ¡Ôñ³ö×î´óµÄ¼æÈÝ»î¶¯×é
 public class ActivityChoice {
     public static void main(String[] args) {
         int[] s = new int[]{1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};

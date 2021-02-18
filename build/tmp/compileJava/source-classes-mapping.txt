@@ -1,3 +1,5 @@
+other/ActivityChoice.java
+ other.ActivityChoice
 leetcode/Topic4.java
  leetcode.Topic4
 art/thread/ThreadDemo2.java
@@ -41,6 +43,8 @@ art/reference/ReferenceTest.java
  art.reference.ReferenceTest
 art/bytecode/asm/AsmMain.java
  art.bytecode.asm.AsmMain
+other/Util2.java
+ other.Util2
 art/lock/LockDemo.java
  art.lock.LockDemo
  art.lock.LockDemo$1
@@ -66,8 +70,12 @@ art/thread/deadlock/DeadLock.java
  art.thread.deadlock.DeadLock
 art/thread/pool/priority/PriorityBlockingQueue.java
  art.thread.pool.priority.PriorityBlockingQueue
+other/Test.java
+ other.Test
 art/encryption/MD5Util.java
  art.encryption.MD5Util
+other/InstallUtil.java
+ other.InstallUtil
 art/bytecode/asm/old/NewClass.java
  art.bytecode.asm.old.NewClass
 art/map/Test.java
@@ -90,6 +98,8 @@ art/Number.java
 art/fun/FunTest.java
  art.fun.FunTest
  art.fun.List
+other/Util.java
+ other.Util
 art/bytecode/cinit/CInitTest.java
  art.bytecode.cinit.A
  art.bytecode.cinit.B
@@ -170,6 +180,8 @@ art/thread/pool/priority/SaveLinkedList.java
  art.thread.pool.priority.SaveLinkedList
 art/encryption/Test.java
  art.encryption.Test
+other/ColorUtil.java
+ other.ColorUtil
 art/genericty/Test.java
  art.genericty.Test
 art/proxy/IPrint2.java
@@ -286,5 +298,10 @@ art/bytecode/inner/Out.java
  art.bytecode.inner.Out$MyThread
 art/genericty/Demo1.java
  art.genericty.Demo1
+other/Match.java
+ other.Match
+ other.Match$1
+ other.Match$1$1
+ other.Match$1$1$1
 art/class34/class5/Person.java
  art.class34.class5.Person

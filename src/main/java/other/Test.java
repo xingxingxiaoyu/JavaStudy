@@ -121,7 +121,7 @@ public class Test {
 //
 //    }
 //    public static int add(int a, int b) {
-//        int carry = 0;            // æ˜¯å¦éœ€è¦è¿›ä½
+//        int carry = 0;            // ÊÇ·ñĞèÒª½øÎ»
 //        while (b != 0) {
 //            carry = (a & b) << 1;
 //            a ^= b;

@@ -7,12 +7,12 @@ import java.util.List;
 
 public class Util {
     public static void main(String[] args) {
-        File file = new File("H:\\OTAå‹æµ‹_æ‘„åƒå¤´OTAå‡çº§æˆåŠŸç‡_20201126202727\\fail_logs");
+        File file = new File("D:\\ÉãÏñÍ·ÏîÄ¿Ïà¹Ø\\ÉãÏñÍ·Ñ¹²âÈÕÖ¾\\OTAÑ¹²â_ÉãÏñÍ·OTAÉı¼¶»Ø¹öÑ¹²â_20210207085748\\fail_logs");
         File[] files = file.listFiles();
         List<Integer> integers = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
             String name = files[i].getName();
-            String s = name.substring(name.indexOf("ç¬¬") + 1, name.indexOf("æ¬¡"));
+            String s = name.substring(name.indexOf("µÚ") + 1, name.indexOf("´Î"));
             integers.add(Integer.valueOf(s));
         }
         Object[] a = integers.toArray();
