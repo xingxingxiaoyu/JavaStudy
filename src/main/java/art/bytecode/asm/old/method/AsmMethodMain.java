@@ -16,7 +16,7 @@ public class AsmMethodMain {
 
         ClassPrinter.saveAndPrintClass(classWriter, AsmMethodTest.class.getName());
 
-        Class<?> aClass = new FileClassLoader("D://asmClass/", Object.class.getClassLoader()).loadClass(AsmMethodTest.class.getName());
+        Class<?> aClass = new FileClassLoader("asmClass/", Object.class.getClassLoader()).loadClass(AsmMethodTest.class.getName());
         aClass.getDeclaredMethod("testPrint").invoke(null);
 
     }

@@ -40,7 +40,7 @@ public class ClassPrinter extends ClassVisitor {
     }
 
     public static void saveAndPrintClass(ClassWriter classWriter, String className) throws Throwable {
-        File file = new File("D://asmClass/" + className.replace('.', '/') + ".class");
+        File file = new File("asmClass/" + className.replace('.', '/') + ".class");
         String parent = file.getParent();
         File parentFile = new File(parent);
         parentFile.mkdirs();
@@ -49,7 +49,7 @@ public class ClassPrinter extends ClassVisitor {
         fileOutputStream.write(classWriter.toByteArray());
         fileOutputStream.flush();
 
-//        Class<?> aClass = new FileClassLoader("D://asmClass/", Object.class.getClassLoader()).loadClass(className);
+//        Class<?> aClass = new FileClassLoader("asmClass/", Object.class.getClassLoader()).loadClass(className);
 //        ReflectionUtil.printClass(aClass);
     }
 }

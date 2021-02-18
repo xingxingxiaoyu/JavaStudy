@@ -1,0 +1,8 @@
+*.iml
+.gradle
+/asmClass
+/.idea
+.DS_Store
+/out
+/build
+.externalNativeBuild

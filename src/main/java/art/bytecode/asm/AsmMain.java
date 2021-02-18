@@ -37,7 +37,7 @@ public class AsmMain  extends ClassLoader implements Opcodes {
         mw.visitMaxs(2, 2);
         mw.visitEnd();
         byte[] code = cw.toByteArray();
-        FileOutputStream fos = new FileOutputStream("Example.class");
+        FileOutputStream fos = new FileOutputStream("asmClass/Example.class");
         fos.write(code);
         fos.close();
         AsmMain loader = new AsmMain();
