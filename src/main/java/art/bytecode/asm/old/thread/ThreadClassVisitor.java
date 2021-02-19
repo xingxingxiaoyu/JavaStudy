@@ -57,46 +57,67 @@ public class ThreadClassVisitor extends ClassVisitor {
             super(ASM7, methodVisitor);
         }
 
-        @Override
-        public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-            System.out.println("visitAnnotation " + descriptor + " visible " + visible);
-            return super.visitAnnotation(descriptor, visible);
-        }
-
-        private boolean flag = false;
 
         @Override
         public void visitTypeInsn(int opcode, String type) {
             System.out.println("visitTypeInsn: " + opcode + " type " + type);
             if (opcode == NEW && "java/lang/Thread".equals(type)) {
-
-                flag = true;
-                mv.visitFieldInsn(GETSTATIC, "art/bytecode/asm/old/thread/AsmThreadTest", "executor", "Ljava/util/concurrent/Executor;");
+                mv.visitTypeInsn(NEW, "art/bytecode/asm/old/thread/FakeThread");
             }
-        }
-
-        @Override
-        public void visitInsn(int opcode) {
-            System.out.println("visitInsn: " + opcode);
-            if (opcode == DUP && flag) {
-                flag = false;
-                return;
-            }
-            super.visitInsn(opcode);
         }
 
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
-            System.out.println("visitMethodInsn: " + opcode);
-            if (opcode == INVOKEVIRTUAL && "java/lang/Thread".equals(owner)) {
-                if ("<init>".equals(name)) {
-                    mv.visitMethodInsn(INVOKEINTERFACE, "java/util/concurrent/Executor", "execute", "(Ljava/lang/Runnable;)V", true);
-                } else if ("start".equals(name)) {
-
-                } else {
-                    super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
-                }
+            if (opcode == INVOKEVIRTUAL && "java/lang/Thread".equals(owner) && "start".equals(name)) {
+                super.visitMethodInsn(opcode, "art/bytecode/asm/old/thread", name, descriptor, isInterface);
             }
         }
+
+        @Override
+        public void visitMaxs(int maxStack, int maxLocals) {
+            super.visitMaxs(maxStack + 10, maxLocals + 10);
+        }
+        //
+//        @Override
+//        public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
+//            System.out.println("visitAnnotation " + descriptor + " visible " + visible);
+//            return super.visitAnnotation(descriptor, visible);
+//        }
+//
+//        private boolean flag = false;
+//
+//        @Override
+//        public void visitTypeInsn(int opcode, String type) {
+//            System.out.println("visitTypeInsn: " + opcode + " type " + type);
+//            if (opcode == NEW && "java/lang/Thread".equals(type)) {
+//
+//                flag = true;
+//                mv.visitFieldInsn(GETSTATIC, "art/bytecode/asm/old/thread/AsmThreadTest", "executor", "Ljava/util/concurrent/Executor;");
+//            }
+//        }
+
+//        @Override
+//        public void visitInsn(int opcode) {
+//            System.out.println("visitInsn: " + opcode);
+//            if (opcode == DUP && flag) {
+//                flag = false;
+//                return;
+//            }
+//            super.visitInsn(opcode);
+//        }
+//
+//        @Override
+//        public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+//            System.out.println("visitMethodInsn: " + opcode);
+//            if (opcode == INVOKEVIRTUAL && "java/lang/Thread".equals(owner)) {
+//                if ("<init>".equals(name)) {
+//                    mv.visitMethodInsn(INVOKEINTERFACE, "java/util/concurrent/Executor", "execute", "(Ljava/lang/Runnable;)V", true);
+//                } else if ("start".equals(name)) {
+//
+//                } else {
+//                    super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+//                }
+//            }
+//        }
     }
 }

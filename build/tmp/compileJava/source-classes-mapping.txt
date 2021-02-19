@@ -55,9 +55,8 @@ art/recommend/BaseRecommend.java
  art.recommend.BaseRecommend
 art/bytecode/asm/old/AsmMain.java
  art.bytecode.asm.old.AsmMain
-art/bytecode/asm/old/thread/AsmThreadTest.java
- art.bytecode.asm.old.thread.AsmThreadTest
- art.bytecode.asm.old.thread.AsmThreadTest$1
+art/bytecode/asm/AsmMain.java
+ art.bytecode.asm.AsmMain
 art/thread/pool/priority/PriorityRejectedExecutionHandler.java
  art.thread.pool.priority.PriorityRejectedExecutionHandler
 daily_question/day3/Test.java
@@ -164,9 +163,8 @@ art/genericty/Addresser.java
  art.genericty.Addresser
 art/class34/class5/FileClassLoader.java
  art.class34.class5.FileClassLoader
-art/bytecode/asm/old/thread/ThreadClassVisitor.java
- art.bytecode.asm.old.thread.ThreadClassVisitor
- art.bytecode.asm.old.thread.ThreadClassVisitor$MyMethodVisitor
+art/bytecode/asm/old/thread/FakeThread.java
+ art.bytecode.asm.old.thread.FakeThread
 art/bytecode/asm/old/thread/AsmThreadTest2.java
  art.bytecode.asm.old.thread.AsmThreadTest2
  art.bytecode.asm.old.thread.AsmThreadTest2$1
@@ -293,15 +291,19 @@ common/BinaryTree.java
  common.BinaryTree
 art/bytecode/asm/old/genericity/AsmGenericityMain.java
  art.bytecode.asm.old.genericity.AsmGenericityMain
-art/bytecode/asm/old/thread/AsmThreadMain.java
- art.bytecode.asm.old.thread.AsmThreadMain
+art/bytecode/asm/old/ClassPrinter.java
+ art.bytecode.asm.old.ClassPrinter
 art/bytecode/asm/old/method/AsmMethodMain.java
  art.bytecode.asm.old.method.AsmMethodMain
 art/bytecode/asm/old/MyClassVisitor.java
  art.bytecode.asm.old.MyClassVisitor
 art/bytecode/asm/old/NewClass.java
  art.bytecode.asm.old.NewClass
-art/bytecode/asm/AsmMain.java
- art.bytecode.asm.AsmMain
-art/bytecode/asm/old/ClassPrinter.java
- art.bytecode.asm.old.ClassPrinter
+art/bytecode/asm/old/thread/AsmThreadTest.java
+ art.bytecode.asm.old.thread.AsmThreadTest
+ art.bytecode.asm.old.thread.AsmThreadTest$1
+art/bytecode/asm/old/thread/AsmThreadMain.java
+ art.bytecode.asm.old.thread.AsmThreadMain
+art/bytecode/asm/old/thread/ThreadClassVisitor.java
+ art.bytecode.asm.old.thread.ThreadClassVisitor
+ art.bytecode.asm.old.thread.ThreadClassVisitor$MyMethodVisitor

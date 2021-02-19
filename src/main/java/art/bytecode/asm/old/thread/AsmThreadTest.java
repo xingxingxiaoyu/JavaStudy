@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 
 public class AsmThreadTest {
 
-    private static Executor executor = Executors.newSingleThreadExecutor();
+    public static Executor executor = Executors.newSingleThreadExecutor();
 
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
