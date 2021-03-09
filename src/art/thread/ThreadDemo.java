@@ -32,7 +32,7 @@ public class ThreadDemo {
 
         public Person(int count) {
             if (count > 0) {
-                this.person = new Person(count - 1);
+                person = new Person(count - 1);
                 this.count = count;
             } else {
                 this.count = count;
