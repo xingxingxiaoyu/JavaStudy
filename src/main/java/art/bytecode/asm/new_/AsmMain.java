@@ -72,5 +72,9 @@ public class AsmMain  extends ClassLoader implements Opcodes {
         loader = new AsmMain();
         exampleClass = loader.defineClass("Example", code, 0, code.length);
         exampleClass.getMethods()[0].invoke(null, new Object[]{null});
+
+        Type.getType(String.class).getInternalName();
+        Type.getType(String.class).getDescriptor();
+        Type intType = Type.INT_TYPE;
     }
 }

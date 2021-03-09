@@ -1,5 +1,6 @@
 package other;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.text.SimpleDateFormat;
@@ -163,9 +164,21 @@ public class Test {
 //            e.printStackTrace();
 //        }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SS");
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT-0:00"));
-        System.out.println(simpleDateFormat.format(new Date(1000)));
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SS");
+//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT-0:00"));
+//        System.out.println(simpleDateFormat.format(new Date(1000)));
 
+//        String path = "D:\\develop\\code\\android\\work\\A_SystemUpgradeCommon\\app\\src\\main\\res\\";
+//        File file = new File(path + "drawable");
+//        File[] files = file.listFiles();
+//        for (int i = 0; i < files.length; i++) {
+//            File targetFile = files[i];
+//            String name = targetFile.getName();
+//            if (name.contains("land")) {
+//                targetFile.renameTo(new File(path + "drawable-land\\" + targetFile.getName().replace("_land", "")));
+//            }
+//        }
+
+        System.out.println("main: " + String.format("%.2f" , 1.127214));
     }
 }
