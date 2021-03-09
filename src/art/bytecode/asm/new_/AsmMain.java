@@ -7,6 +7,7 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
 import org.objectweb.asm.commons.Method;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
@@ -37,7 +38,13 @@ public class AsmMain  extends ClassLoader implements Opcodes {
         mw.visitMaxs(2, 2);
         mw.visitEnd();
         byte[] code = cw.toByteArray();
-        FileOutputStream fos = new FileOutputStream("asmClass/Example.class");
+        String name = "asmClass/Example.class";
+        File file = new File(name);
+        if (!file.exists()){
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        }
+        FileOutputStream fos = new FileOutputStream(name);
         fos.write(code);
         fos.close();
         AsmMain loader = new AsmMain();
