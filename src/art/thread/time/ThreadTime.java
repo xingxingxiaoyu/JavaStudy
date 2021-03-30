@@ -15,6 +15,7 @@ public class ThreadTime {
                 @Override
                 public void run() {
                     long startTime = System.currentTimeMillis();
+
                     for (int i = 0; i < 10; i++) {
                         System.out.println("run: " + Thread.currentThread().getName() + " " + i);
                         try {
