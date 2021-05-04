@@ -7,6 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Test {
+    public static void main(String[] args) {
+        String a = "sdf" + "sdfhj¦¸" + "gsdjfgsdj";
+        String b = "";
+        for (int i = 0; i < 10; i++) {
+            b += i;
+        }
+
+    }
+
+
     //    public static void main(String[] args) {
 ////        testA();
 ////        testB();
@@ -154,31 +164,31 @@ public class Test {
 ////        }
 ////    }
 
-    public static void main(String[] args) {
-//        System.out.println(String.format("%.2f", (2146379135.0 / 1024 / 1024)) + "M");
-
-//        try {
-//            InetAddress[] allByName = InetAddress.getAllByName("kkmsg.kkapp.com");
-//            System.out.println(Arrays.toString(allByName));
-//        } catch (UnknownHostException e) {
-//            e.printStackTrace();
-//        }
-
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SS");
-//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT-0:00"));
-//        System.out.println(simpleDateFormat.format(new Date(1000)));
-
-//        String path = "D:\\develop\\code\\android\\work\\A_SystemUpgradeCommon\\app\\src\\main\\res\\";
-//        File file = new File(path + "drawable");
-//        File[] files = file.listFiles();
-//        for (int i = 0; i < files.length; i++) {
-//            File targetFile = files[i];
-//            String name = targetFile.getName();
-//            if (name.contains("land")) {
-//                targetFile.renameTo(new File(path + "drawable-land\\" + targetFile.getName().replace("_land", "")));
-//            }
-//        }
-
-        System.out.println("main: " + String.format("%.2f" , 1.127214));
-    }
+//    public static void main(String[] args) {
+////        System.out.println(String.format("%.2f", (2146379135.0 / 1024 / 1024)) + "M");
+//
+////        try {
+////            InetAddress[] allByName = InetAddress.getAllByName("kkmsg.kkapp.com");
+////            System.out.println(Arrays.toString(allByName));
+////        } catch (UnknownHostException e) {
+////            e.printStackTrace();
+////        }
+//
+////        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SS");
+////        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT-0:00"));
+////        System.out.println(simpleDateFormat.format(new Date(1000)));
+//
+////        String path = "D:\\develop\\code\\android\\work\\A_SystemUpgradeCommon\\app\\src\\main\\res\\";
+////        File file = new File(path + "drawable");
+////        File[] files = file.listFiles();
+////        for (int i = 0; i < files.length; i++) {
+////            File targetFile = files[i];
+////            String name = targetFile.getName();
+////            if (name.contains("land")) {
+////                targetFile.renameTo(new File(path + "drawable-land\\" + targetFile.getName().replace("_land", "")));
+////            }
+////        }
+//
+//        System.out.println("main: " + String.format("%.2f" , 1.127214));
+//    }
 }
