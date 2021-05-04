@@ -4,14 +4,7 @@ import java.util.concurrent.*;
 
 public class ThreadPoolDemo {
     public static void main(String[] args) {
-        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2, 10, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2));
-
-        poolExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
+//        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2, 10, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2));
 //        poolExecutor.setRejectedExecutionHandler(new RejectedExecutionHandler() {
 //            @Override
 //            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
