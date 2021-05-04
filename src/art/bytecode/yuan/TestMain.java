@@ -15,17 +15,17 @@ public class TestMain {
         Test test = new Test();
         B b = new B();
 
-        System.out.println("替换前");
+        System.out.println("?滻?");
         System.out.println(test.a.selfIntroduction());
 
         TKt.replaceObject(test, "a", b);
 
-        System.out.println("强转前");
+        System.out.println("???");
         System.out.println(test.a.selfIntroduction());
         System.out.println(test.a.testField);
         System.out.println(test.a.getClass());
 
-        System.out.println("强转后");
+        System.out.println("????");
         Object obb = test.a;
         System.out.println(((B) obb).selfIntroduction());
         System.out.println(((B) obb).testField);

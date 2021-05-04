@@ -1,4 +1,4 @@
-package leetcode.topic_2_涓ゆ暟涔嬪拰;
+package leetcode.topic_2_两数之和;
 
 public class DataNode {
     private int value;

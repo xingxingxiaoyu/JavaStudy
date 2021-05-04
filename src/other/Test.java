@@ -8,11 +8,18 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        String a = "sdf" + "sdfhj¦¸" + "gsdjfgsdj";
+        String a1 = "wherkwejr";
+        String a2 = "hdfksdhfjs";
+        String a3 = "dfgdf";
+        String a4 = "rtyrty";
+        String a5 = "gdfger";
+        String a = a1 + a2 + a3 + a4 + a5;
+        String c = "dfg" + "234234" + "353423" + "53498" + "dbfjer";
         String b = "";
         for (int i = 0; i < 10; i++) {
             b += i;
         }
+        System.out.println(a + b + c);
 
     }
 
