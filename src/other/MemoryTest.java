@@ -2,7 +2,7 @@ package other;
 
 public class MemoryTest {
     private int a = 12;
-    private String str = "Âæê‰Ω≥Â≥∞";
+    private String str = "–Ïº—∑Â";
 
     private static int aStatic = 124;
 
@@ -16,7 +16,7 @@ public class MemoryTest {
         new MemoryTest().foo(xujiafeng);
     }
 
-    static String xujiafeng = "Âæê‰Ω≥Â≥∞";
+    static String xujiafeng = "–Ïº—∑Â";
 
 
     private void foo(int param) {

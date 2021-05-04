@@ -8,14 +8,14 @@ public class StartTimeTest {
     }
 
     /**
-     * 不考虑任务的依赖关系，计算执行这些任务的耗时
+     * �����������������ϵ������ִ����Щ����ĺ�ʱ
      *
      * @param taskList
      * @param threadNumber
      * @return
      */
     private int getElapsedTime(List<Task> taskList, int threadNumber) {
-        //记录每个线程执行的任务耗时
+        //��¼ÿ���߳�ִ�е������ʱ
         int[] threadTimes = new int[threadNumber];
         for (int i = 0; i < taskList.size(); i++) {
             int minIndex = getMinIndex(threadTimes);

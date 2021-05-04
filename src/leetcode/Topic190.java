@@ -1,6 +1,6 @@
 package leetcode;
 
-//ç¿»è½¬int
+//·­×ªint
 public class Topic190 {
     public static void main(String[] args) {
 
@@ -16,15 +16,15 @@ public class Topic190 {
         int result = 0;
         int flag = 1;
         for (int i = 0; i < 32; i++) {
-            //èŽ·å–å½“å‰ä½çš„æ•°å­—i=0çš„æ—¶å€™æˆ–å–å¾—æ˜¯æœ€ä½Žä½çš„
+            //»ñÈ¡µ±Ç°Î»µÄÊý×Öi=0µÄÊ±ºò»òÈ¡µÃÊÇ×îµÍÎ»µÄ
             int currentPos = flag & number;
-            //ç§»åˆ°ç›®æ ‡æ•°å­—çš„ä½ç½®
+            //ÒÆµ½Ä¿±êÊý×ÖµÄÎ»ÖÃ
             if (31 - i * 2 > 0) {
                 currentPos = currentPos << (31 - i * 2);
             } else {
                 currentPos = currentPos >>> -(31 - i * 2);
             }
-            //æ”¾åˆ°ç»“æžœæ•°å­—
+            //·Åµ½½á¹ûÊý×Ö
             result = result | currentPos;
 //            System.out.println("turnInt: i " + i + " result " + Integer.toHexString(result));
 //            System.out.println("turnInt: i " + i + " currentPos " + Integer.toHexString(currentPos));
