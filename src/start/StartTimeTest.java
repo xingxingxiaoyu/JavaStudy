@@ -4,18 +4,22 @@ import java.util.List;
 
 public class StartTimeTest {
     public static void main(String[] args) {
-
+        String a="";
+        for (int i = 0; i < 100; i++) {
+            a+=i;
+        }
+        System.out.println("main: "+a);
     }
 
     /**
-     * ²»¿¼ÂÇÈÎÎñµÄÒÀÀµ¹ØÏµ£¬¼ÆËãÖ´ĞĞÕâĞ©ÈÎÎñµÄºÄÊ±
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½ï¿½Äºï¿½Ê±
      *
      * @param taskList
      * @param threadNumber
      * @return
      */
     private int getElapsedTime(List<Task> taskList, int threadNumber) {
-        //¼ÇÂ¼Ã¿¸öÏß³ÌÖ´ĞĞµÄÈÎÎñºÄÊ±
+        //ï¿½ï¿½Â¼Ã¿ï¿½ï¿½ï¿½ß³ï¿½Ö´ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
         int[] threadTimes = new int[threadNumber];
         for (int i = 0; i < taskList.size(); i++) {
             int minIndex = getMinIndex(threadTimes);
