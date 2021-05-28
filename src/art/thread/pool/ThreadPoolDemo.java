@@ -87,7 +87,6 @@ public class ThreadPoolDemo {
 
         ScheduledExecutorService singleThreadExecutor = Executors.newScheduledThreadPool(2);
 
-
         singleThreadExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

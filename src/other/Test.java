@@ -8,20 +8,31 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        String a1 = "wherkwejr";
-        String a2 = "hdfksdhfjs";
-        String a3 = "dfgdf";
-        String a4 = "rtyrty";
-        String a5 = "gdfger";
-        String a = a1 + a2 + a3 + a4 + a5;
-        String c = "dfg" + "234234" + "353423" + "53498" + "dbfjer";
-        String b = "";
-        for (int i = 0; i < 10; i++) {
-            b += i;
-        }
-        System.out.println(a + b + c);
-
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add("bb");
+        objects.add("sdfasdf");
+        objects.add("asgdjasd");
+        System.out.println("main: before objects " + objects);
+        ArrayList<Object> nextObjects = new ArrayList<>(objects);
+        nextObjects.remove(0);
+        System.out.println("main: after objects " + objects);
+        System.out.println("main: after nextObjects " + nextObjects);
     }
+//    public static void main(String[] args) {
+//        String a1 = "wherkwejr";
+//        String a2 = "hdfksdhfjs";
+//        String a3 = "dfgdf";
+//        String a4 = "rtyrty";
+//        String a5 = "gdfger";
+//        String a = a1 + a2 + a3 + a4 + a5;
+//        String c = "dfg" + "234234" + "353423" + "53498" + "dbfjer";
+//        String b = "";
+//        for (int i = 0; i < 10; i++) {
+//            b += i;
+//        }
+//        System.out.println(a + b + c);
+//
+//    }
 
 
     //    public static void main(String[] args) {
@@ -139,7 +150,7 @@ public class Test {
 //
 //    }
 //    public static int add(int a, int b) {
-//        int carry = 0;            // ÊÇ·ñÐèÒª½øÎ»
+//        int carry = 0;            // ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½Î»
 //        while (b != 0) {
 //            carry = (a & b) << 1;
 //            a ^= b;
