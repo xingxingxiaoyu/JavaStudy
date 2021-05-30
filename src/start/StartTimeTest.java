@@ -12,14 +12,14 @@ public class StartTimeTest {
     }
 
     /**
-     * �����������������ϵ������ִ����Щ����ĺ�ʱ
+     * ?????????????????????????????��???????
      *
      * @param taskList
      * @param threadNumber
      * @return
      */
     private int getElapsedTime(List<Task> taskList, int threadNumber) {
-        //��¼ÿ���߳�ִ�е������ʱ
+        //???????????��???????
         int[] threadTimes = new int[threadNumber];
         for (int i = 0; i < taskList.size(); i++) {
             int minIndex = getMinIndex(threadTimes);
