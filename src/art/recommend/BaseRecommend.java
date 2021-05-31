@@ -1,112 +1,112 @@
-package art.recommend;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.function.Function;
-
-/**
- * ³éÏóµÄÍÆ¼öÊµÌå
- */
-public abstract class BaseRecommend {
-    private static final int PREFERENCE_LENGTH = 100;
-    private static final int INDEX_LENGTH = 3;
-    //ÃèÊöÕâ¸öÍÆ¼öÊµÌåµÄĞËÈ¤Æ«Ïò,ĞËÈ¤´Ó-100~100
-    protected double[] preferenceDisplay = new double[PREFERENCE_LENGTH];
-
-    /**
-     * Õâ¸öÍÆ¼öÊµÌåµÄÑµÁ·³ÉÊì³Ì¶È 0-1
-     */
-    protected float maturityGrade;
-
-    /**
-     * Æ¥Åä´ÎÊı£¬Õâ¸ö²ÎÊıÄÜÔÚÒ»¶¨³Ì¶ÈÉÏ·´Ó³maturityGrade
-     */
-    protected int matchCount = 0;
-
-
-    /**
-     * ¸ù¾İÁ½¸öÍÆ¼öÊµÌåÖ®¼äµÄÆ¥Åä¶ÈÀ´ĞŞÕıĞËÈ¤Æ«Ïò
-     * Ö»ÌôÑ¡¼¸¸ö´ú±íÀ´ĞŞÕı£¬ÒòÎªÏ²ºÃÒ»°ãÊÇÕë¶ÔÍÆ¼öÊµÌåµÄÏÔÖøÌØÕ÷À´µÄ
-     *
-     * @param other ÁíÒ»¸öÍÆ¼öÊµÌå
-     * @param match Á½ÕßÖ®¼äµÄÆ¥Åä¶È ·¶Î§-1~1
-     */
-    public void preferenceMatch(BaseRecommend other, float match) {
-        int[] index = getPreferenceDisplayHighIndex();
-        int[] otherIndex = other.getPreferenceDisplayHighIndex();
-        int[] mixIndex = mixIndex(index, otherIndex);
-        for (int i = 0; i < mixIndex.length; i++) {
-            maturityChange(preferenceMatchIndex(mixIndex[i], other, match));
-            other.maturityChange(other.preferenceMatchIndex(mixIndex[i], this, match));
-        }
-        matchCount++;
-        other.matchCount++;
-    }
-
-    /**
-     * »Ó·¢º¯Êı£¬»á½µµÍÑµÁ·³ÉÊì¶È£¬·ÀÖ¹ÍÆ¼öÊµÌåÑµÁ·³ÉÊìÖ®ºóĞËÈ¤Æ«Ïòºã¶¨
-     */
-    protected abstract void maturityChange(int grade);
-
-    private int preferenceMatchIndex(int index, BaseRecommend other, float match) {
-        return preferenceMatchIndex(index, other.preferenceDisplay[index], match);
-    }
-
-    protected abstract int preferenceMatchIndex(int index, double otherDisplay, float match);
-
-    private int[] mixIndex(int[] index, int[] otherIndex) {
-        HashSet<Integer> integers = new HashSet<>();
-        for (int i = 0; i < index.length; i++) {
-            integers.add(index[i]);
-        }
-        for (int i = 0; i < otherIndex.length; i++) {
-            integers.add(otherIndex[i]);
-        }
-        Integer[] objects = (Integer[]) integers.toArray();
-        return Arrays.stream(objects).mapToInt(Integer::intValue).toArray();
-    }
-
-    /**
-     * »ñÈ¡ĞËÈ¤Æ«ÏòµÄ´ú±í
-     *
-     * @return ·µ»ØĞËÈ¤Æ«Ïò×î´óµÄ {@link #INDEX_LENGTH} ¸öÆ«Ïò ºÍ×îĞ¡µÄ {@link #INDEX_LENGTH} ¸öÆ«ÏòµÄÏÂ±ê
-     */
-    private int[] getPreferenceDisplayHighIndex() {
-        int[] indexArray = new int[INDEX_LENGTH * 2];
-        for (int i = 1; i < PREFERENCE_LENGTH; i++) {
-            if (preferenceDisplay[i] > preferenceDisplay[indexArray[0]]) {
-                indexArray[0] = i;
-                sortHigh(indexArray);
-            } else if (preferenceDisplay[i] < preferenceDisplay[indexArray[INDEX_LENGTH]]) {
-                indexArray[INDEX_LENGTH] = i;
-                sortLow(indexArray);
-            }
-        }
-        return indexArray;
-    }
-
-    private void sortLow(int[] indexArray) {
-        sortByOffset(indexArray, INDEX_LENGTH, true);
-    }
-
-    private void sortHigh(int[] indexArray) {
-        sortByOffset(indexArray, 0, false);
-    }
-
-    /**
-     * @param indexArray
-     * @param offset
-     * @param isLow      ÅÅĞòÊÇ´ÓµÍµ½¸ß
-     */
-    private void sortByOffset(int[] indexArray, int offset, boolean isLow) {
-        for (int i = offset + 1; i < INDEX_LENGTH; i++) {
-            if (preferenceDisplay[indexArray[i - 1]] > preferenceDisplay[indexArray[i]] ^ isLow) {
-                int index = indexArray[i];
-                indexArray[i] = indexArray[i - 1];
-                indexArray[i - 1] = index;
-            }
-        }
-    }
-
-
-}
+package art.recommend; 
+ 
+import java.util.Arrays; 
+import java.util.HashSet; 
+import java.util.function.Function; 
+ 
+/** 
+ * æŠ½è±¡çš„æ¨èå®ä½“ 
+ */ 
+public abstract class BaseRecommend { 
+    private static final int PREFERENCE_LENGTH = 100; 
+    private static final int INDEX_LENGTH = 3; 
+    //æè¿°è¿™ä¸ªæ¨èå®ä½“çš„å…´è¶£åå‘,å…´è¶£ä»-100~100 
+    protected double[] preferenceDisplay = new double[PREFERENCE_LENGTH]; 
+ 
+    /** 
+     * è¿™ä¸ªæ¨èå®ä½“çš„è®­ç»ƒæˆç†Ÿç¨‹åº¦ 0-1 
+     */ 
+    protected float maturityGrade; 
+ 
+    /** 
+     * åŒ¹é…æ¬¡æ•°ï¼Œè¿™ä¸ªå‚æ•°èƒ½åœ¨ä¸€å®šç¨‹åº¦ä¸Šåæ˜ maturityGrade 
+     */ 
+    protected int matchCount = 0; 
+ 
+ 
+    /** 
+     * æ ¹æ®ä¸¤ä¸ªæ¨èå®ä½“ä¹‹é—´çš„åŒ¹é…åº¦æ¥ä¿®æ­£å…´è¶£åå‘ 
+     * åªæŒ‘é€‰å‡ ä¸ªä»£è¡¨æ¥ä¿®æ­£ï¼Œå› ä¸ºå–œå¥½ä¸€èˆ¬æ˜¯é’ˆå¯¹æ¨èå®ä½“çš„æ˜¾è‘—ç‰¹å¾æ¥çš„ 
+     * 
+     * @param other å¦ä¸€ä¸ªæ¨èå®ä½“ 
+     * @param match ä¸¤è€…ä¹‹é—´çš„åŒ¹é…åº¦ èŒƒå›´-1~1 
+     */ 
+    public void preferenceMatch(BaseRecommend other, float match) { 
+        int[] index = getPreferenceDisplayHighIndex(); 
+        int[] otherIndex = other.getPreferenceDisplayHighIndex(); 
+        int[] mixIndex = mixIndex(index, otherIndex); 
+        for (int i = 0; i < mixIndex.length; i++) { 
+            maturityChange(preferenceMatchIndex(mixIndex[i], other, match)); 
+            other.maturityChange(other.preferenceMatchIndex(mixIndex[i], this, match)); 
+        } 
+        matchCount++; 
+        other.matchCount++; 
+    } 
+ 
+    /** 
+     * æŒ¥å‘å‡½æ•°ï¼Œä¼šé™ä½è®­ç»ƒæˆç†Ÿåº¦ï¼Œé˜²æ­¢æ¨èå®ä½“è®­ç»ƒæˆç†Ÿä¹‹åå…´è¶£åå‘æ’å®š 
+     */ 
+    protected abstract void maturityChange(int grade); 
+ 
+    private int preferenceMatchIndex(int index, BaseRecommend other, float match) { 
+        return preferenceMatchIndex(index, other.preferenceDisplay[index], match); 
+    } 
+ 
+    protected abstract int preferenceMatchIndex(int index, double otherDisplay, float match); 
+ 
+    private int[] mixIndex(int[] index, int[] otherIndex) { 
+        HashSet<Integer> integers = new HashSet<>(); 
+        for (int i = 0; i < index.length; i++) { 
+            integers.add(index[i]); 
+        } 
+        for (int i = 0; i < otherIndex.length; i++) { 
+            integers.add(otherIndex[i]); 
+        } 
+        Integer[] objects = (Integer[]) integers.toArray(); 
+        return Arrays.stream(objects).mapToInt(Integer::intValue).toArray(); 
+    } 
+ 
+    /** 
+     * è·å–å…´è¶£åå‘çš„ä»£è¡¨ 
+     * 
+     * @return è¿”å›å…´è¶£åå‘æœ€å¤§çš„ {@link #INDEX_LENGTH} ä¸ªåå‘ å’Œæœ€å°çš„ {@link #INDEX_LENGTH} ä¸ªåå‘çš„ä¸‹æ ‡ 
+     */ 
+    private int[] getPreferenceDisplayHighIndex() { 
+        int[] indexArray = new int[INDEX_LENGTH * 2]; 
+        for (int i = 1; i < PREFERENCE_LENGTH; i++) { 
+            if (preferenceDisplay[i] > preferenceDisplay[indexArray[0]]) { 
+                indexArray[0] = i; 
+                sortHigh(indexArray); 
+            } else if (preferenceDisplay[i] < preferenceDisplay[indexArray[INDEX_LENGTH]]) { 
+                indexArray[INDEX_LENGTH] = i; 
+                sortLow(indexArray); 
+            } 
+        } 
+        return indexArray; 
+    } 
+ 
+    private void sortLow(int[] indexArray) { 
+        sortByOffset(indexArray, INDEX_LENGTH, true); 
+    } 
+ 
+    private void sortHigh(int[] indexArray) { 
+        sortByOffset(indexArray, 0, false); 
+    } 
+ 
+    /** 
+     * @param indexArray 
+     * @param offset 
+     * @param isLow      æ’åºæ˜¯ä»ä½åˆ°é«˜ 
+     */ 
+    private void sortByOffset(int[] indexArray, int offset, boolean isLow) { 
+        for (int i = offset + 1; i < INDEX_LENGTH; i++) { 
+            if (preferenceDisplay[indexArray[i - 1]] > preferenceDisplay[indexArray[i]] ^ isLow) { 
+                int index = indexArray[i]; 
+                indexArray[i] = indexArray[i - 1]; 
+                indexArray[i - 1] = index; 
+            } 
+        } 
+    } 
+ 
+ 
+} 

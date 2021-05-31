@@ -1,54 +1,54 @@
-package leetcode.topic1622_ÆæÃîĞòÁĞ;
-
-import java.util.ArrayList;
-/*
-ÇëÄãÊµÏÖÈı¸ö API append£¬addAll?ºÍ?multAll?À´ÊµÏÖÆæÃîĞòÁĞ¡£
-
-        ÇëÊµÏÖ?Fancy?Àà £º
-
-        Fancy()?³õÊ¼»¯Ò»¸ö¿ÕĞòÁĞ¶ÔÏó¡£
-        void append(val) ½«ÕûÊı?val?Ìí¼ÓÔÚĞòÁĞÄ©Î²¡£
-        void addAll(inc)?½«ËùÓĞĞòÁĞÖĞµÄÏÖÓĞÊıÖµ¶¼Ôö¼Ó?inc?¡£
-        void multAll(m)?½«ĞòÁĞÖĞµÄËùÓĞÏÖÓĞÊıÖµ¶¼³ËÒÔÕûÊı?m?¡£
-        int getIndex(idx) µÃµ½ÏÂ±êÎª?idx?´¦µÄÊıÖµ£¨ÏÂ±ê´Ó 0 ¿ªÊ¼£©£¬²¢½«½á¹û¶Ô?109 + 7?È¡Óà¡£Èç¹ûÏÂ±ê´óÓÚµÈÓÚĞòÁĞµÄ³¤¶È£¬Çë·µ»Ø?-1?¡£
-
-        À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-        Á´½Ó£ºhttps://leetcode-cn.com/problems/fancy-sequence
-        Öø×÷È¨¹éÁì¿ÛÍøÂçËùÓĞ¡£ÉÌÒµ×ªÔØÇëÁªÏµ¹Ù·½ÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£*/
-public class Fancy {
-
-    private ArrayList<Integer> list = new ArrayList<>();
-
-    public Fancy() {
-
-    }
-
-    public void append(int val) {
-        list.add(val);
-    }
-
-    public void addAll(int inc) {
-        for (int i = 0; i < list.size(); i++) {
-            list.set(i, list.get(i) + inc);
-        }
-    }
-
-    public void multAll(int m) {
-        for (int i = 0; i < list.size(); i++) {
-            list.set(i, list.get(i) * m);
-        }
-    }
-
-    public int getIndex(int idx) {
-        if (idx >= list.size()) {
-            return -1;
-        }
-        int value = list.get(idx);
-        value = value % (10_0000_0000 + 7);
-        return value;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("main: "+(10_0000_0000 + 7));
-    }
-}
+package leetcode.topic1622_å¥‡å¦™åºåˆ—; 
+ 
+import java.util.ArrayList; 
+/* 
+è¯·ä½ å®ç°ä¸‰ä¸ª API appendï¼ŒaddAll?å’Œ?multAll?æ¥å®ç°å¥‡å¦™åºåˆ—ã€‚ 
+ 
+        è¯·å®ç°?Fancy?ç±» ï¼š 
+ 
+        Fancy()?åˆå§‹åŒ–ä¸€ä¸ªç©ºåºåˆ—å¯¹è±¡ã€‚ 
+        void append(val) å°†æ•´æ•°?val?æ·»åŠ åœ¨åºåˆ—æœ«å°¾ã€‚ 
+        void addAll(inc)?å°†æ‰€æœ‰åºåˆ—ä¸­çš„ç°æœ‰æ•°å€¼éƒ½å¢åŠ ?inc?ã€‚ 
+        void multAll(m)?å°†åºåˆ—ä¸­çš„æ‰€æœ‰ç°æœ‰æ•°å€¼éƒ½ä¹˜ä»¥æ•´æ•°?m?ã€‚ 
+        int getIndex(idx) å¾—åˆ°ä¸‹æ ‡ä¸º?idx?å¤„çš„æ•°å€¼ï¼ˆä¸‹æ ‡ä» 0 å¼€å§‹ï¼‰ï¼Œå¹¶å°†ç»“æœå¯¹?109 + 7?å–ä½™ã€‚å¦‚æœä¸‹æ ‡å¤§äºç­‰äºåºåˆ—çš„é•¿åº¦ï¼Œè¯·è¿”å›?-1?ã€‚ 
+ 
+        æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰ 
+        é“¾æ¥ï¼šhttps://leetcode-cn.com/problems/fancy-sequence 
+        è‘—ä½œæƒå½’é¢†æ‰£ç½‘ç»œæ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»å®˜æ–¹æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚*/ 
+public class Fancy { 
+ 
+    private ArrayList<Integer> list = new ArrayList<>(); 
+ 
+    public Fancy() { 
+ 
+    } 
+ 
+    public void append(int val) { 
+        list.add(val); 
+    } 
+ 
+    public void addAll(int inc) { 
+        for (int i = 0; i < list.size(); i++) { 
+            list.set(i, list.get(i) + inc); 
+        } 
+    } 
+ 
+    public void multAll(int m) { 
+        for (int i = 0; i < list.size(); i++) { 
+            list.set(i, list.get(i) * m); 
+        } 
+    } 
+ 
+    public int getIndex(int idx) { 
+        if (idx >= list.size()) { 
+            return -1; 
+        } 
+        int value = list.get(idx); 
+        value = value % (10_0000_0000 + 7); 
+        return value; 
+    } 
+ 
+    public static void main(String[] args) { 
+        System.out.println("main: "+(10_0000_0000 + 7)); 
+    } 
+} 

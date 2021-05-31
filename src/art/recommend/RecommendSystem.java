@@ -1,10 +1,10 @@
-package art.recommend;
-
-/*
-一个简单的推荐系统
- */
-public class RecommendSystem {
-    public static void main(String[] args) {
-
-    }
-}
+package art.recommend; 
+ 
+/* 
+涓�涓畝鍗曠殑鎺ㄨ崘绯荤粺 
+ */ 
+public class RecommendSystem { 
+    public static void main(String[] args) { 
+ 
+    } 
+} 

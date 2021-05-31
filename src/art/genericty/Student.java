@@ -1,4 +1,4 @@
-package art.genericty;
-
-public class Student {
-}
+package art.genericty; 
+ 
+public class Student { 
+} 

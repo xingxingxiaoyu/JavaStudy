@@ -1,95 +1,95 @@
-package leetcode;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/*
- *½«Ò»¸ö¸ø¶¨×Ö·û´®¸ù¾İ¸ø¶¨µÄĞĞÊı£¬ÒÔ´ÓÉÏÍùÏÂ¡¢´Ó×óµ½ÓÒ½øĞĞ?Z ×ÖĞÎÅÅÁĞ¡£
-
-±ÈÈçÊäÈë×Ö·û´®Îª "LEETCODEISHIRING"?ĞĞÊıÎª 3 Ê±£¬ÅÅÁĞÈçÏÂ£º
-
-L   C   I   R
-E T O E S I I G
-E   D   H   N
-Ö®ºó£¬ÄãµÄÊä³öĞèÒª´Ó×óÍùÓÒÖğĞĞ¶ÁÈ¡£¬²úÉú³öÒ»¸öĞÂµÄ×Ö·û´®£¬±ÈÈç£º"LCIRETOESIIGEDHN"¡£
-
-ÇëÄãÊµÏÖÕâ¸ö½«×Ö·û´®½øĞĞÖ¸¶¨ĞĞÊı±ä»»µÄº¯Êı£º
-
-string convert(string s, int numRows);
-Ê¾Àı?1:
-
-ÊäÈë: s = "LEETCODEISHIRING", numRows = 3
-Êä³ö: "LCIRETOESIIGEDHN"
-Ê¾Àı?2:
-
-ÊäÈë: s = "LEETCODEISHIRING", numRows =?4
-Êä³ö:?"LDREOEIIECIHNTSG"
-½âÊÍ:
-
-L     D     R
-E   O E   I I
-E C   I H   N
-T     S     G
-
-À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-Á´½Ó£ºhttps://leetcode-cn.com/problems/zigzag-conversion
-Öø×÷È¨¹éÁì¿ÛÍøÂçËùÓĞ¡£ÉÌÒµ×ªÔØÇëÁªÏµ¹Ù·½ÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£
- *
- * */
-public class Topic6 {
-    public static void main(String[] args) {
-        for (int i = 0; i < 1000; i++) {
-            System.out.println((7 & i) + " " + (8 & i) + " " + (15 & i));
-        }
-        HashMap<String, String> map = new HashMap<>();
-        map.put("","");
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey());
-
-        }
-
-        System.out.println(10 << 1);
-        System.out.println(new Topic6().convert("LEETCODEISHIRING", 3));
-        System.out.println(new Topic6().convert("LEETCODEISHIRING", 4));
-
-    }
-
-    public String convert(String s, int numRows) {
-        if (numRows <= 1) return s;
-
-        char[][] chars = new char[s.length()][numRows];
-        int x = 0, y = 0;
-        boolean isDown = true;
-        for (int i = 0; i < s.length(); i++) {
-            chars[x][y] = s.charAt(i);
-            if (isDown) {
-                y++;
-                if (y == numRows - 1) {
-                    isDown = false;
-                }
-            } else {
-                x++;
-                y--;
-                if (y == 0) {
-                    isDown = true;
-                }
-            }
-
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < s.length(); j++) {
-                if (chars[j][i] != 0) {
-                    stringBuilder.append(chars[j][i]);
-                }
-
-            }
-
-        }
-
-        return stringBuilder.toString();
-
-    }
-
-
-}
+package leetcode; 
+ 
+import java.util.HashMap; 
+import java.util.Map; 
+ 
+/* 
+ *å°†ä¸€ä¸ªç»™å®šå­—ç¬¦ä¸²æ ¹æ®ç»™å®šçš„è¡Œæ•°ï¼Œä»¥ä»ä¸Šå¾€ä¸‹ã€ä»å·¦åˆ°å³è¿›è¡Œ?Z å­—å½¢æ’åˆ—ã€‚ 
+ 
+æ¯”å¦‚è¾“å…¥å­—ç¬¦ä¸²ä¸º "LEETCODEISHIRING"?è¡Œæ•°ä¸º 3 æ—¶ï¼Œæ’åˆ—å¦‚ä¸‹ï¼š 
+ 
+L   C   I   R 
+E T O E S I I G 
+E   D   H   N 
+ä¹‹åï¼Œä½ çš„è¾“å‡ºéœ€è¦ä»å·¦å¾€å³é€è¡Œè¯»å–ï¼Œäº§ç”Ÿå‡ºä¸€ä¸ªæ–°çš„å­—ç¬¦ä¸²ï¼Œæ¯”å¦‚ï¼š"LCIRETOESIIGEDHN"ã€‚ 
+ 
+è¯·ä½ å®ç°è¿™ä¸ªå°†å­—ç¬¦ä¸²è¿›è¡ŒæŒ‡å®šè¡Œæ•°å˜æ¢çš„å‡½æ•°ï¼š 
+ 
+string convert(string s, int numRows); 
+ç¤ºä¾‹?1: 
+ 
+è¾“å…¥: s = "LEETCODEISHIRING", numRows = 3 
+è¾“å‡º: "LCIRETOESIIGEDHN" 
+ç¤ºä¾‹?2: 
+ 
+è¾“å…¥: s = "LEETCODEISHIRING", numRows =?4 
+è¾“å‡º:?"LDREOEIIECIHNTSG" 
+è§£é‡Š: 
+ 
+L     D     R 
+E   O E   I I 
+E C   I H   N 
+T     S     G 
+ 
+æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰ 
+é“¾æ¥ï¼šhttps://leetcode-cn.com/problems/zigzag-conversion 
+è‘—ä½œæƒå½’é¢†æ‰£ç½‘ç»œæ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»å®˜æ–¹æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚ 
+ * 
+ * */ 
+public class Topic6 { 
+    public static void main(String[] args) { 
+        for (int i = 0; i < 1000; i++) { 
+            System.out.println((7 & i) + " " + (8 & i) + " " + (15 & i)); 
+        } 
+        HashMap<String, String> map = new HashMap<>(); 
+        map.put("",""); 
+        for (Map.Entry<String, String> entry : map.entrySet()) { 
+            System.out.println(entry.getKey()); 
+ 
+        } 
+ 
+        System.out.println(10 << 1); 
+        System.out.println(new Topic6().convert("LEETCODEISHIRING", 3)); 
+        System.out.println(new Topic6().convert("LEETCODEISHIRING", 4)); 
+ 
+    } 
+ 
+    public String convert(String s, int numRows) { 
+        if (numRows <= 1) return s; 
+ 
+        char[][] chars = new char[s.length()][numRows]; 
+        int x = 0, y = 0; 
+        boolean isDown = true; 
+        for (int i = 0; i < s.length(); i++) { 
+            chars[x][y] = s.charAt(i); 
+            if (isDown) { 
+                y++; 
+                if (y == numRows - 1) { 
+                    isDown = false; 
+                } 
+            } else { 
+                x++; 
+                y--; 
+                if (y == 0) { 
+                    isDown = true; 
+                } 
+            } 
+ 
+        } 
+        StringBuilder stringBuilder = new StringBuilder(); 
+        for (int i = 0; i < numRows; i++) { 
+            for (int j = 0; j < s.length(); j++) { 
+                if (chars[j][i] != 0) { 
+                    stringBuilder.append(chars[j][i]); 
+                } 
+ 
+            } 
+ 
+        } 
+ 
+        return stringBuilder.toString(); 
+ 
+    } 
+ 
+ 
+} 

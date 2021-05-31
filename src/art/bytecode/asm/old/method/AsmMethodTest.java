@@ -1,17 +1,17 @@
-package art.bytecode.asm.old.method;
-
-public class AsmMethodTest {
-    public static void testPrint() {
-        {
-            System.out.println("testPrint");
-        }
-    }
-
-    public static void testPrintResult() {
-        long var1 = System.nanoTime();
-        System.out.println("¿ª¹¤12");
-        var1 = System.nanoTime() - var1;
-        System.out.println(var1);
-    }
-
-}
+package art.bytecode.asm.old.method; 
+ 
+public class AsmMethodTest { 
+    public static void testPrint() { 
+        { 
+            System.out.println("testPrint"); 
+        } 
+    } 
+ 
+    public static void testPrintResult() { 
+        long var1 = System.nanoTime(); 
+        System.out.println("å¼€å·¥12"); 
+        var1 = System.nanoTime() - var1; 
+        System.out.println(var1); 
+    } 
+ 
+} 

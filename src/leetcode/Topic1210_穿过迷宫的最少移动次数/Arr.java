@@ -1,6 +1,6 @@
-package leetcode.Topic1210_´©¹ıÃÔ¹¬µÄ×îÉÙÒÆ¶¯´ÎÊı;
-
-public class Arr {
-    public static void main() {
-    }
-}
+package leetcode.Topic1210_ç©¿è¿‡è¿·å®«çš„æœ€å°‘ç§»åŠ¨æ¬¡æ•°; 
+ 
+public class Arr { 
+    public static void main() { 
+    } 
+} 

@@ -1,153 +1,153 @@
-package art.encryption;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-/**
- * MD5Éú³ÉÎÄ¼şĞ£ÑéÖµ
- *
- * @author liuyazhuang
- */
-public class MD5Util {
-    /**
-     * Ä¬ÈÏµÄÃÜÂë×Ö·û´®×éºÏ£¬ÓÃÀ´½«×Ö½Ú×ª»»³É 16 ½øÖÆ±íÊ¾µÄ×Ö·û,apacheĞ£ÑéÏÂÔØµÄÎÄ¼şµÄÕıÈ·ĞÔÓÃµÄ¾ÍÊÇÄ¬ÈÏµÄÕâ¸ö×éºÏ
-     */
-    protected static char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-    protected static MessageDigest messagedigest = null;
-
-    static {
-        try {
-            messagedigest = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException nsaex) {
-            System.err.println(MD5Util.class.getName() + "³õÊ¼»¯Ê§°Ü£¬MessageDigest²»Ö§³ÖMD5Util¡£");
-            nsaex.printStackTrace();
-        }
-    }
-
-    /**
-     * Éú³É×Ö·û´®µÄmd5Ğ£ÑéÖµ
-     *
-     * @param s
-     * @return
-     */
-    public static String getMD5String(String s) {
-        return getMD5String(s.getBytes());
-    }
-
-    /**
-     * ÅĞ¶Ï×Ö·û´®µÄmd5Ğ£ÑéÂëÊÇ·ñÓëÒ»¸öÒÑÖªµÄmd5ÂëÏàÆ¥Åä
-     *
-     * @param password  ÒªĞ£ÑéµÄ×Ö·û´®
-     * @param md5PwdStr ÒÑÖªµÄmd5Ğ£ÑéÂë
-     * @return
-     */
-    public static boolean checkPassword(String password, String md5PwdStr) {
-        String s = getMD5String(password);
-        return s.equals(md5PwdStr);
-    }
-
-    /**
-     * Éú³ÉÎÄ¼şµÄmd5Ğ£ÑéÖµ
-     *
-     * @param file
-     * @return
-     * @throws IOException
-     */
-    public static String getFileMD5String(File file) throws IOException {
-        InputStream fis;
-        fis = new FileInputStream(file);
-        byte[] buffer = new byte[1024];
-        int numRead = 0;
-        while ((numRead = fis.read(buffer)) > 0) {
-            messagedigest.update(buffer, 0, numRead);
-        }
-        fis.close();
-        return bufferToHex(messagedigest.digest());
-    }
-
-    /**
-     * JDK1.4ÖĞ²»Ö§³ÖÒÔMappedByteBufferÀàĞÍÎª²ÎÊıupdate·½·¨£¬²¢ÇÒÍøÉÏÓĞÌÖÂÛÒªÉ÷ÓÃMappedByteBuffer£¬
-     * Ô­ÒòÊÇµ±Ê¹ÓÃ FileChannel.map ·½·¨Ê±£¬MappedByteBuffer ÒÑ¾­ÔÚÏµÍ³ÄÚÕ¼ÓÃÁËÒ»¸ö¾ä±ú£¬ ¶øÊ¹ÓÃ
-     * FileChannel.close ·½·¨ÊÇÎŞ·¨ÊÍ·ÅÕâ¸ö¾ä±úµÄ£¬ÇÒFileChannelÓĞÃ»ÓĞÌá¹©ÀàËÆ unmap µÄ·½·¨£¬
-     * Òò´Ë»á³öÏÖÎŞ·¨É¾³ıÎÄ¼şµÄÇé¿ö¡£
-     * <p>
-     * ²»ÍÆ¼öÊ¹ÓÃ
-     *
-     * @param file
-     * @return
-     * @throws IOException
-     */
-    public static String getFileMD5String_old(File file) throws IOException {
-        FileInputStream in = new FileInputStream(file);
-        FileChannel ch = in.getChannel();
-        MappedByteBuffer byteBuffer = ch.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
-        messagedigest.update(byteBuffer);
-        in.close();
-        return bufferToHex(messagedigest.digest());
-    }
-
-    public static String getMD5String(byte[] bytes) {
-        messagedigest.update(bytes);
-        return bufferToHex(messagedigest.digest());
-    }
-
-    private static String bufferToHex(byte bytes[]) {
-        return bufferToHex(bytes, 0, bytes.length);
-    }
-
-    private static String bufferToHex(byte bytes[], int m, int n) {
-        StringBuffer stringbuffer = new StringBuffer(2 * n);
-        int k = m + n;
-        for (int l = m; l < k; l++) {
-            appendHexPair(bytes[l], stringbuffer);
-        }
-        return stringbuffer.toString();
-    }
-
-    private static void appendHexPair(byte bt, StringBuffer stringbuffer) {
-        char c0 = hexDigits[(bt & 0xf0) >> 4];// È¡×Ö½ÚÖĞ¸ß 4 Î»µÄÊı×Ö×ª»», >>>
-        // ÎªÂß¼­ÓÒÒÆ£¬½«·ûºÅÎ»Ò»ÆğÓÒÒÆ,´Ë´¦Î´·¢ÏÖÁ½ÖÖ·ûºÅÓĞºÎ²»Í¬
-        char c1 = hexDigits[bt & 0xf];// È¡×Ö½ÚÖĞµÍ 4 Î»µÄÊı×Ö×ª»»
-        stringbuffer.append(c0);
-        stringbuffer.append(c1);
-    }
-
-    public static void main(String[] args) throws IOException {
-        long begin = System.currentTimeMillis();
-
-        File file = new File("C:/test.txt");
-        if (!file.exists()) {
-            System.out.println("²»´æÔÚ");
-        }
-        String md5 = getFileMD5String(file);
-
-//      String md5 = getMD5String("a");
-
-        long end = System.currentTimeMillis();
-        System.out.println("md5:" + md5 + " time:" + ((end - begin) / 1000) + "s");
-        System.out.println(file.getPath());
-    }
-
-    public static String stringToMD5(String plainText) {
-        byte[] secretBytes = null;
-        try {
-            secretBytes = MessageDigest.getInstance("md5").digest(
-                    plainText.getBytes());
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Ã»ÓĞÕâ¸ömd5Ëã·¨£¡");
-        }
-        String md5code = new BigInteger(1, secretBytes).toString(16);
-        for (int i = 0; i < 32 - md5code.length(); i++) {
-            md5code = "0" + md5code;
-        }
-        return md5code;
-    }
-}
+package art.encryption; 
+ 
+import java.io.File; 
+import java.io.FileInputStream; 
+import java.io.IOException; 
+import java.io.InputStream; 
+import java.math.BigInteger; 
+import java.nio.MappedByteBuffer; 
+import java.nio.channels.FileChannel; 
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException; 
+ 
+/** 
+ * MD5ç”Ÿæˆæ–‡ä»¶æ ¡éªŒå€¼ 
+ * 
+ * @author liuyazhuang 
+ */ 
+public class MD5Util { 
+    /** 
+     * é»˜è®¤çš„å¯†ç å­—ç¬¦ä¸²ç»„åˆï¼Œç”¨æ¥å°†å­—èŠ‚è½¬æ¢æˆ 16 è¿›åˆ¶è¡¨ç¤ºçš„å­—ç¬¦,apacheæ ¡éªŒä¸‹è½½çš„æ–‡ä»¶çš„æ­£ç¡®æ€§ç”¨çš„å°±æ˜¯é»˜è®¤çš„è¿™ä¸ªç»„åˆ 
+     */ 
+    protected static char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}; 
+ 
+    protected static MessageDigest messagedigest = null; 
+ 
+    static { 
+        try { 
+            messagedigest = MessageDigest.getInstance("MD5"); 
+        } catch (NoSuchAlgorithmException nsaex) { 
+            System.err.println(MD5Util.class.getName() + "åˆå§‹åŒ–å¤±è´¥ï¼ŒMessageDigestä¸æ”¯æŒMD5Utilã€‚"); 
+            nsaex.printStackTrace(); 
+        } 
+    } 
+ 
+    /** 
+     * ç”Ÿæˆå­—ç¬¦ä¸²çš„md5æ ¡éªŒå€¼ 
+     * 
+     * @param s 
+     * @return 
+     */ 
+    public static String getMD5String(String s) { 
+        return getMD5String(s.getBytes()); 
+    } 
+ 
+    /** 
+     * åˆ¤æ–­å­—ç¬¦ä¸²çš„md5æ ¡éªŒç æ˜¯å¦ä¸ä¸€ä¸ªå·²çŸ¥çš„md5ç ç›¸åŒ¹é… 
+     * 
+     * @param password  è¦æ ¡éªŒçš„å­—ç¬¦ä¸² 
+     * @param md5PwdStr å·²çŸ¥çš„md5æ ¡éªŒç  
+     * @return 
+     */ 
+    public static boolean checkPassword(String password, String md5PwdStr) { 
+        String s = getMD5String(password); 
+        return s.equals(md5PwdStr); 
+    } 
+ 
+    /** 
+     * ç”Ÿæˆæ–‡ä»¶çš„md5æ ¡éªŒå€¼ 
+     * 
+     * @param file 
+     * @return 
+     * @throws IOException 
+     */ 
+    public static String getFileMD5String(File file) throws IOException { 
+        InputStream fis; 
+        fis = new FileInputStream(file); 
+        byte[] buffer = new byte[1024]; 
+        int numRead = 0; 
+        while ((numRead = fis.read(buffer)) > 0) { 
+            messagedigest.update(buffer, 0, numRead); 
+        } 
+        fis.close(); 
+        return bufferToHex(messagedigest.digest()); 
+    } 
+ 
+    /** 
+     * JDK1.4ä¸­ä¸æ”¯æŒä»¥MappedByteBufferç±»å‹ä¸ºå‚æ•°updateæ–¹æ³•ï¼Œå¹¶ä¸”ç½‘ä¸Šæœ‰è®¨è®ºè¦æ…ç”¨MappedByteBufferï¼Œ 
+     * åŸå› æ˜¯å½“ä½¿ç”¨ FileChannel.map æ–¹æ³•æ—¶ï¼ŒMappedByteBuffer å·²ç»åœ¨ç³»ç»Ÿå†…å ç”¨äº†ä¸€ä¸ªå¥æŸ„ï¼Œ è€Œä½¿ç”¨ 
+     * FileChannel.close æ–¹æ³•æ˜¯æ— æ³•é‡Šæ”¾è¿™ä¸ªå¥æŸ„çš„ï¼Œä¸”FileChannelæœ‰æ²¡æœ‰æä¾›ç±»ä¼¼ unmap çš„æ–¹æ³•ï¼Œ 
+     * å› æ­¤ä¼šå‡ºç°æ— æ³•åˆ é™¤æ–‡ä»¶çš„æƒ…å†µã€‚ 
+     * <p> 
+     * ä¸æ¨èä½¿ç”¨ 
+     * 
+     * @param file 
+     * @return 
+     * @throws IOException 
+     */ 
+    public static String getFileMD5String_old(File file) throws IOException { 
+        FileInputStream in = new FileInputStream(file); 
+        FileChannel ch = in.getChannel(); 
+        MappedByteBuffer byteBuffer = ch.map(FileChannel.MapMode.READ_ONLY, 0, file.length()); 
+        messagedigest.update(byteBuffer); 
+        in.close(); 
+        return bufferToHex(messagedigest.digest()); 
+    } 
+ 
+    public static String getMD5String(byte[] bytes) { 
+        messagedigest.update(bytes); 
+        return bufferToHex(messagedigest.digest()); 
+    } 
+ 
+    private static String bufferToHex(byte bytes[]) { 
+        return bufferToHex(bytes, 0, bytes.length); 
+    } 
+ 
+    private static String bufferToHex(byte bytes[], int m, int n) { 
+        StringBuffer stringbuffer = new StringBuffer(2 * n); 
+        int k = m + n; 
+        for (int l = m; l < k; l++) { 
+            appendHexPair(bytes[l], stringbuffer); 
+        } 
+        return stringbuffer.toString(); 
+    } 
+ 
+    private static void appendHexPair(byte bt, StringBuffer stringbuffer) { 
+        char c0 = hexDigits[(bt & 0xf0) >> 4];// å–å­—èŠ‚ä¸­é«˜ 4 ä½çš„æ•°å­—è½¬æ¢, >>> 
+        // ä¸ºé€»è¾‘å³ç§»ï¼Œå°†ç¬¦å·ä½ä¸€èµ·å³ç§»,æ­¤å¤„æœªå‘ç°ä¸¤ç§ç¬¦å·æœ‰ä½•ä¸åŒ 
+        char c1 = hexDigits[bt & 0xf];// å–å­—èŠ‚ä¸­ä½ 4 ä½çš„æ•°å­—è½¬æ¢ 
+        stringbuffer.append(c0); 
+        stringbuffer.append(c1); 
+    } 
+ 
+    public static void main(String[] args) throws IOException { 
+        long begin = System.currentTimeMillis(); 
+ 
+        File file = new File("C:/test.txt"); 
+        if (!file.exists()) { 
+            System.out.println("ä¸å­˜åœ¨"); 
+        } 
+        String md5 = getFileMD5String(file); 
+ 
+//      String md5 = getMD5String("a"); 
+ 
+        long end = System.currentTimeMillis(); 
+        System.out.println("md5:" + md5 + " time:" + ((end - begin) / 1000) + "s"); 
+        System.out.println(file.getPath()); 
+    } 
+ 
+    public static String stringToMD5(String plainText) { 
+        byte[] secretBytes = null; 
+        try { 
+            secretBytes = MessageDigest.getInstance("md5").digest( 
+                    plainText.getBytes()); 
+        } catch (NoSuchAlgorithmException e) { 
+            throw new RuntimeException("æ²¡æœ‰è¿™ä¸ªmd5ç®—æ³•ï¼"); 
+        } 
+        String md5code = new BigInteger(1, secretBytes).toString(16); 
+        for (int i = 0; i < 32 - md5code.length(); i++) { 
+            md5code = "0" + md5code; 
+        } 
+        return md5code; 
+    } 
+} 

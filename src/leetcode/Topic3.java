@@ -1,79 +1,79 @@
-package leetcode;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/*¸ø¶¨Ò»¸ö×Ö·û´®£¬ÇëÄãÕÒ³öÆäÖĞ²»º¬ÓĞÖØ¸´×Ö·ûµÄ?×î³¤×Ó´®?µÄ³¤¶È¡£
-
-Ê¾Àı?1:
-
-ÊäÈë: "abcabcbb"
-Êä³ö: 3
-½âÊÍ: ÒòÎªÎŞÖØ¸´×Ö·ûµÄ×î³¤×Ó´®ÊÇ "abc"£¬ËùÒÔÆä³¤¶ÈÎª 3¡£
-Ê¾Àı 2:
-
-ÊäÈë: "bbbbb"
-Êä³ö: 1
-½âÊÍ: ÒòÎªÎŞÖØ¸´×Ö·ûµÄ×î³¤×Ó´®ÊÇ "b"£¬ËùÒÔÆä³¤¶ÈÎª 1¡£
-Ê¾Àı 3:
-
-ÊäÈë: "pwwkew"
-Êä³ö: 3
-½âÊÍ: ÒòÎªÎŞÖØ¸´×Ö·ûµÄ×î³¤×Ó´®ÊÇ?"wke"£¬ËùÒÔÆä³¤¶ÈÎª 3¡£
-?    Çë×¢Òâ£¬ÄãµÄ´ğ°¸±ØĞëÊÇ ×Ó´® µÄ³¤¶È£¬"pwke"?ÊÇÒ»¸ö×ÓĞòÁĞ£¬²»ÊÇ×Ó´®¡£
-
-À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-Á´½Ó£ºhttps://leetcode-cn.com/problems/longest-substring-without-repeating-characters
-Öø×÷È¨¹éÁì¿ÛÍøÂçËùÓĞ¡£ÉÌÒµ×ªÔØÇëÁªÏµ¹Ù·½ÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£*/
-public class Topic3 {
-    public static void main(String[] args) {
-        Topic3 topic3 = new Topic3();
-        System.out.println(topic3.lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(topic3.lengthOfLongestSubstring("bbbbb"));
-        System.out.println(topic3.lengthOfLongestSubstring("pwwkew"));
-
-        System.out.println(topic3.lengthOfLongestSubstring("dvdf"));
-
-    }
-
-    public int lengthOfLongestSubstring(String s) {
-        if (s == null) {
-            return 0;
-        }
-        int result = 0;
-        String sResult = null;
-        List<Character> characters = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            int lastIndexOf = characters.lastIndexOf(c);
-            if (lastIndexOf > -1) {
-                if (result < characters.size()) {
-                    result = characters.size();
-                    sResult = characters.toString();
-                }
-                characters = characters.subList(lastIndexOf + 1, characters.size());
-                characters.add(c);
-            } else {
-                characters.add(c);
-            }
-        }
-        if (result < characters.size()) {
-            result = characters.size();
-            sResult = characters.toString();
-        }
-        System.out.println(sResult);
-        return result;
-
-    }
-
-//    public int lengthOfLongestSubstring2(String s) {
-//
-//
-//    }
-//
-//    public int lengthOfLongestSubstringChild(String s1, String s2) {
-//
-//        return Math.max(lengthOfLongestSubstring2(s1), lengthOfLongestSubstring2(s2));
-//
-//    }
-}
+package leetcode; 
+ 
+import java.util.ArrayList; 
+import java.util.List; 
+ 
+/*ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¯·ä½ æ‰¾å‡ºå…¶ä¸­ä¸å«æœ‰é‡å¤å­—ç¬¦çš„?æœ€é•¿å­ä¸²?çš„é•¿åº¦ã€‚ 
+ 
+ç¤ºä¾‹?1: 
+ 
+è¾“å…¥: "abcabcbb" 
+è¾“å‡º: 3 
+è§£é‡Š: å› ä¸ºæ— é‡å¤å­—ç¬¦çš„æœ€é•¿å­ä¸²æ˜¯ "abc"ï¼Œæ‰€ä»¥å…¶é•¿åº¦ä¸º 3ã€‚ 
+ç¤ºä¾‹ 2: 
+ 
+è¾“å…¥: "bbbbb" 
+è¾“å‡º: 1 
+è§£é‡Š: å› ä¸ºæ— é‡å¤å­—ç¬¦çš„æœ€é•¿å­ä¸²æ˜¯ "b"ï¼Œæ‰€ä»¥å…¶é•¿åº¦ä¸º 1ã€‚ 
+ç¤ºä¾‹ 3: 
+ 
+è¾“å…¥: "pwwkew" 
+è¾“å‡º: 3 
+è§£é‡Š: å› ä¸ºæ— é‡å¤å­—ç¬¦çš„æœ€é•¿å­ä¸²æ˜¯?"wke"ï¼Œæ‰€ä»¥å…¶é•¿åº¦ä¸º 3ã€‚ 
+?    è¯·æ³¨æ„ï¼Œä½ çš„ç­”æ¡ˆå¿…é¡»æ˜¯ å­ä¸² çš„é•¿åº¦ï¼Œ"pwke"?æ˜¯ä¸€ä¸ªå­åºåˆ—ï¼Œä¸æ˜¯å­ä¸²ã€‚ 
+ 
+æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰ 
+é“¾æ¥ï¼šhttps://leetcode-cn.com/problems/longest-substring-without-repeating-characters 
+è‘—ä½œæƒå½’é¢†æ‰£ç½‘ç»œæ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»å®˜æ–¹æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚*/ 
+public class Topic3 { 
+    public static void main(String[] args) { 
+        Topic3 topic3 = new Topic3(); 
+        System.out.println(topic3.lengthOfLongestSubstring("abcabcbb")); 
+        System.out.println(topic3.lengthOfLongestSubstring("bbbbb")); 
+        System.out.println(topic3.lengthOfLongestSubstring("pwwkew")); 
+ 
+        System.out.println(topic3.lengthOfLongestSubstring("dvdf")); 
+ 
+    } 
+ 
+    public int lengthOfLongestSubstring(String s) { 
+        if (s == null) { 
+            return 0; 
+        } 
+        int result = 0; 
+        String sResult = null; 
+        List<Character> characters = new ArrayList<>(); 
+        for (int i = 0; i < s.length(); i++) { 
+            char c = s.charAt(i); 
+            int lastIndexOf = characters.lastIndexOf(c); 
+            if (lastIndexOf > -1) { 
+                if (result < characters.size()) { 
+                    result = characters.size(); 
+                    sResult = characters.toString(); 
+                } 
+                characters = characters.subList(lastIndexOf + 1, characters.size()); 
+                characters.add(c); 
+            } else { 
+                characters.add(c); 
+            } 
+        } 
+        if (result < characters.size()) { 
+            result = characters.size(); 
+            sResult = characters.toString(); 
+        } 
+        System.out.println(sResult); 
+        return result; 
+ 
+    } 
+ 
+//    public int lengthOfLongestSubstring2(String s) { 
+// 
+// 
+//    } 
+// 
+//    public int lengthOfLongestSubstringChild(String s1, String s2) { 
+// 
+//        return Math.max(lengthOfLongestSubstring2(s1), lengthOfLongestSubstring2(s2)); 
+// 
+//    } 
+} 

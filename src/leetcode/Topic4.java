@@ -1,38 +1,38 @@
-package leetcode;
-
-/*¸ø¶¨Á½¸ö´óĞ¡Îª m ºÍ n µÄÓĞĞòÊı×é nums1 ºÍ nums2¡£
-
-        ÇëÄãÕÒ³öÕâÁ½¸öÓĞĞòÊı×éµÄÖĞÎ»Êı£¬²¢ÇÒÒªÇóËã·¨µÄÊ±¼ä¸´ÔÓ¶ÈÎª O(log(m + n))¡£
-
-        Äã¿ÉÒÔ¼ÙÉè nums1 ºÍ nums2 ²»»áÍ¬Ê±Îª¿Õ¡£
-
-        Ê¾Àı 1:
-
-        nums1 = [1, 3]
-        nums2 = [2]
-
-        ÔòÖĞÎ»ÊıÊÇ 2.0
-        Ê¾Àı 2:
-
-        nums1 = [1, 2]
-        nums2 = [3, 4]
-
-        ÔòÖĞÎ»ÊıÊÇ (2 + 3)/2 = 2.5*/
-public class Topic4 {
-
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int a1 = 0;
-        int a2 = 0;
-        int b1 = nums1.length;
-        int b2 = nums2.length;
-
-        return 10;
-    }
-
-    public double findMedianSortedArrays(int[] nums1, int[] nums2, int a1, int b1, int a2, int b2, int index) {
-        if (nums1[(a1 + b1) / 2] < nums2[(a2 + b2) / 2]) {
-            
-        }
-        return 10;
-    }
-}
+package leetcode; 
+ 
+/*ç»™å®šä¸¤ä¸ªå¤§å°ä¸º m å’Œ n çš„æœ‰åºæ•°ç»„ nums1 å’Œ nums2ã€‚ 
+ 
+        è¯·ä½ æ‰¾å‡ºè¿™ä¸¤ä¸ªæœ‰åºæ•°ç»„çš„ä¸­ä½æ•°ï¼Œå¹¶ä¸”è¦æ±‚ç®—æ³•çš„æ—¶é—´å¤æ‚åº¦ä¸º O(log(m + n))ã€‚ 
+ 
+        ä½ å¯ä»¥å‡è®¾ nums1 å’Œ nums2 ä¸ä¼šåŒæ—¶ä¸ºç©ºã€‚ 
+ 
+        ç¤ºä¾‹ 1: 
+ 
+        nums1 = [1, 3] 
+        nums2 = [2] 
+ 
+        åˆ™ä¸­ä½æ•°æ˜¯ 2.0 
+        ç¤ºä¾‹ 2: 
+ 
+        nums1 = [1, 2] 
+        nums2 = [3, 4] 
+ 
+        åˆ™ä¸­ä½æ•°æ˜¯ (2 + 3)/2 = 2.5*/ 
+public class Topic4 { 
+ 
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) { 
+        int a1 = 0; 
+        int a2 = 0; 
+        int b1 = nums1.length; 
+        int b2 = nums2.length; 
+ 
+        return 10; 
+    } 
+ 
+    public double findMedianSortedArrays(int[] nums1, int[] nums2, int a1, int b1, int a2, int b2, int index) { 
+        if (nums1[(a1 + b1) / 2] < nums2[(a2 + b2) / 2]) { 
+             
+        } 
+        return 10; 
+    } 
+} 

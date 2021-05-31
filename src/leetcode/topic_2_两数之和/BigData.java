@@ -1,40 +1,40 @@
-package leetcode.topic_2_Á½ÊıÖ®ºÍ;
-
-import java.util.Arrays;
-import java.util.Collections;
-
-public class BigData implements Comparable<BigData> {
-    private DataNode node;
-    //¼ÇÂ¼×î¸ßÎ»
-    private int heigh;
-    //¼ÇÂ¼Ğ¡ÊıµãÎ»Êı
-    private int radixPoint;
-    //¼ÇÂ¼Á´±í³¤¶È
-    private int length;
-
-    public BigData add(BigData data) {
-        return null;
-
-    }
-
-    public BigData minus(BigData data) {
-        return null;
-
-    }
-
-    public BigData multiply(BigData data) {
-        return null;
-
-    }
-
-    public BigData divide(BigData data) {
-        return null;
-
-    }
-
-
-    @Override
-    public int compareTo(BigData o) {
-        return 0;
-    }
-}
+package leetcode.topic_2_ä¸¤æ•°ä¹‹å’Œ; 
+ 
+import java.util.Arrays; 
+import java.util.Collections; 
+ 
+public class BigData implements Comparable<BigData> { 
+    private DataNode node; 
+    //è®°å½•æœ€é«˜ä½ 
+    private int heigh; 
+    //è®°å½•å°æ•°ç‚¹ä½æ•° 
+    private int radixPoint; 
+    //è®°å½•é“¾è¡¨é•¿åº¦ 
+    private int length; 
+ 
+    public BigData add(BigData data) { 
+        return null; 
+ 
+    } 
+ 
+    public BigData minus(BigData data) { 
+        return null; 
+ 
+    } 
+ 
+    public BigData multiply(BigData data) { 
+        return null; 
+ 
+    } 
+ 
+    public BigData divide(BigData data) { 
+        return null; 
+ 
+    } 
+ 
+ 
+    @Override 
+    public int compareTo(BigData o) { 
+        return 0; 
+    } 
+} 

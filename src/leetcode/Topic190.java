@@ -1,40 +1,40 @@
-package leetcode;
-
-//·­×ªint
-public class Topic190 {
-    public static void main(String[] args) {
-
-        System.out.println("main: " + turnInt(1));
-        System.out.println("main: " + turnInt(0xffffffff));
-        System.out.println("main: " + turnInt(2));
-        System.out.println("main: " + turnInt(43261596));
-        System.out.println("main: " + turnInt(1));
-    }
-
-    private static int turnInt(int number) {
-        System.out.println("turnInt: " + Integer.toHexString(number));
-        int result = 0;
-        int flag = 1;
-        for (int i = 0; i < 32; i++) {
-            //»ñÈ¡µ±Ç°Î»µÄÊý×Öi=0µÄÊ±ºò»òÈ¡µÃÊÇ×îµÍÎ»µÄ
-            int currentPos = flag & number;
-            //ÒÆµ½Ä¿±êÊý×ÖµÄÎ»ÖÃ
-            if (31 - i * 2 > 0) {
-                currentPos = currentPos << (31 - i * 2);
-            } else {
-                currentPos = currentPos >>> -(31 - i * 2);
-            }
-            //·Åµ½½á¹ûÊý×Ö
-            result = result | currentPos;
-//            System.out.println("turnInt: i " + i + " result " + Integer.toHexString(result));
-//            System.out.println("turnInt: i " + i + " currentPos " + Integer.toHexString(currentPos));
-//            System.out.println("turnInt: i " + i + " flag " + Integer.toHexString(flag));
-
-            flag <<= 1;
-        }
-        System.out.println("main: " + Integer.toBinaryString(number));
-        System.out.println("main: " + Integer.toBinaryString(result));
-
-        return result;
-    }
-}
+package leetcode; 
+ 
+//ç¿»è½¬int 
+public class Topic190 { 
+    public static void main(String[] args) { 
+ 
+        System.out.println("main: " + turnInt(1)); 
+        System.out.println("main: " + turnInt(0xffffffff)); 
+        System.out.println("main: " + turnInt(2)); 
+        System.out.println("main: " + turnInt(43261596)); 
+        System.out.println("main: " + turnInt(1)); 
+    } 
+ 
+    private static int turnInt(int number) { 
+        System.out.println("turnInt: " + Integer.toHexString(number)); 
+        int result = 0; 
+        int flag = 1; 
+        for (int i = 0; i < 32; i++) { 
+            //èŽ·å–å½“å‰ä½çš„æ•°å­—i=0çš„æ—¶å€™æˆ–å–å¾—æ˜¯æœ€ä½Žä½çš„ 
+            int currentPos = flag & number; 
+            //ç§»åˆ°ç›®æ ‡æ•°å­—çš„ä½ç½® 
+            if (31 - i * 2 > 0) { 
+                currentPos = currentPos << (31 - i * 2); 
+            } else { 
+                currentPos = currentPos >>> -(31 - i * 2); 
+            } 
+            //æ”¾åˆ°ç»“æžœæ•°å­— 
+            result = result | currentPos; 
+//            System.out.println("turnInt: i " + i + " result " + Integer.toHexString(result)); 
+//            System.out.println("turnInt: i " + i + " currentPos " + Integer.toHexString(currentPos)); 
+//            System.out.println("turnInt: i " + i + " flag " + Integer.toHexString(flag)); 
+ 
+            flag <<= 1; 
+        } 
+        System.out.println("main: " + Integer.toBinaryString(number)); 
+        System.out.println("main: " + Integer.toBinaryString(result)); 
+ 
+        return result; 
+    } 
+} 

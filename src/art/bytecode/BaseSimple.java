@@ -1,4 +1,4 @@
-package art.bytecode;
-
-public abstract class BaseSimple {
-}
+package art.bytecode; 
+ 
+public abstract class BaseSimple { 
+} 

@@ -1,4 +1,4 @@
-package art.bytecode;
-
-public interface ISimple {
-}
+package art.bytecode; 
+ 
+public interface ISimple { 
+} 

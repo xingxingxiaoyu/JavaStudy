@@ -1,4 +1,4 @@
-package art.bytecode.asm.old.method;
-//dgkfdjlgdsÉ½¶«·¢»õ¿î¼Ò¾ßµÄ·ç¸ñºÍ¿ª»§ĞĞµÄ¿ª¹¤·¹¿´
-public class A {
-}
+package art.bytecode.asm.old.method; 
+//dgkfdjlgdså±±ä¸œå‘è´§æ¬¾å®¶å…·çš„é£æ ¼å’Œå¼€æˆ·è¡Œçš„å¼€å·¥é¥­çœ‹ 
+public class A { 
+} 

@@ -1,5 +1,5 @@
-package art.proxy;
-
-public interface IPrint2 {
-    void print();
-}
+package art.proxy; 
+ 
+public interface IPrint2 { 
+    void print(); 
+} 

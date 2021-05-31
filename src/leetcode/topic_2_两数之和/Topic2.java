@@ -1,62 +1,62 @@
-package leetcode.topic_2_Á½ÊýÖ®ºÍ;
-
-/*¸ø³öÁ½¸ö?·Ç¿Õ µÄÁ´±íÓÃÀ´±íÊ¾Á½¸ö·Ç¸ºµÄÕûÊý¡£ÆäÖÐ£¬ËüÃÇ¸÷×ÔµÄÎ»ÊýÊÇ°´ÕÕ?ÄæÐò?µÄ·½Ê½´æ´¢µÄ£¬²¢ÇÒËüÃÇµÄÃ¿¸ö½ÚµãÖ»ÄÜ´æ´¢?Ò»Î»?Êý×Ö¡£
-
-Èç¹û£¬ÎÒÃÇ½«ÕâÁ½¸öÊýÏà¼ÓÆðÀ´£¬Ôò»á·µ»ØÒ»¸öÐÂµÄÁ´±íÀ´±íÊ¾ËüÃÇµÄºÍ¡£
-
-Äú¿ÉÒÔ¼ÙÉè³ýÁËÊý×Ö 0 Ö®Íâ£¬ÕâÁ½¸öÊý¶¼²»»áÒÔ 0?¿ªÍ·¡£
-
-Ê¾Àý£º
-
-ÊäÈë£º(2 -> 4 -> 3) + (5 -> 6 -> 4)
-Êä³ö£º7 -> 0 -> 8
-Ô­Òò£º342 + 465 = 807
-
-À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-Á´½Ó£ºhttps://leetcode-cn.com/problems/add-two-numbers
-Öø×÷È¨¹éÁì¿ÛÍøÂçËùÓÐ¡£ÉÌÒµ×ªÔØÇëÁªÏµ¹Ù·½ÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£*/
-public class Topic2 {
-    public static void main(String[] args) {
-        ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
-        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4, new ListNode(1))));
-        System.out.println(new Topic2().addTwoNumbers(l1, l2));
-    }
-
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode listNode = new ListNode(0);
-        ListNode curListNode = listNode;
-        boolean isCarry = false;
-        while (true) {
-            int sum = 0;
-            if (isCarry) {
-                sum = getVal(l1) + getVal(l2) + 1;
-            } else {
-                sum = getVal(l1) + getVal(l2);
-            }
-            if (sum > 9) {
-                curListNode.val = sum - 10;
-                isCarry = true;
-            } else {
-                curListNode.val = sum;
-                isCarry = false;
-            }
-            l1 = l1 == null ? null : l1.next;
-            l2 = l2 == null ? null : l2.next;
-            if (l1 == null && l2 == null) {
-                if (isCarry) {
-                    curListNode.next = new ListNode(1);
-                }
-                break;
-            }
-            ListNode nextListNode = new ListNode(0);
-            curListNode.next = nextListNode;
-            curListNode = nextListNode;
-        }
-        return listNode;
-
-    }
-
-    private int getVal(ListNode listNode) {
-        return listNode == null ? 0 : listNode.val;
-    }
-}
+package leetcode.topic_2_ä¸¤æ•°ä¹‹å’Œ; 
+ 
+/*ç»™å‡ºä¸¤ä¸ª?éžç©º çš„é“¾è¡¨ç”¨æ¥è¡¨ç¤ºä¸¤ä¸ªéžè´Ÿçš„æ•´æ•°ã€‚å…¶ä¸­ï¼Œå®ƒä»¬å„è‡ªçš„ä½æ•°æ˜¯æŒ‰ç…§?é€†åº?çš„æ–¹å¼å­˜å‚¨çš„ï¼Œå¹¶ä¸”å®ƒä»¬çš„æ¯ä¸ªèŠ‚ç‚¹åªèƒ½å­˜å‚¨?ä¸€ä½?æ•°å­—ã€‚ 
+ 
+å¦‚æžœï¼Œæˆ‘ä»¬å°†è¿™ä¸¤ä¸ªæ•°ç›¸åŠ èµ·æ¥ï¼Œåˆ™ä¼šè¿”å›žä¸€ä¸ªæ–°çš„é“¾è¡¨æ¥è¡¨ç¤ºå®ƒä»¬çš„å’Œã€‚ 
+ 
+æ‚¨å¯ä»¥å‡è®¾é™¤äº†æ•°å­— 0 ä¹‹å¤–ï¼Œè¿™ä¸¤ä¸ªæ•°éƒ½ä¸ä¼šä»¥ 0?å¼€å¤´ã€‚ 
+ 
+ç¤ºä¾‹ï¼š 
+ 
+è¾“å…¥ï¼š(2 -> 4 -> 3) + (5 -> 6 -> 4) 
+è¾“å‡ºï¼š7 -> 0 -> 8 
+åŽŸå› ï¼š342 + 465 = 807 
+ 
+æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰ 
+é“¾æŽ¥ï¼šhttps://leetcode-cn.com/problems/add-two-numbers 
+è‘—ä½œæƒå½’é¢†æ‰£ç½‘ç»œæ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»å®˜æ–¹æŽˆæƒï¼Œéžå•†ä¸šè½¬è½½è¯·æ³¨æ˜Žå‡ºå¤„ã€‚*/ 
+public class Topic2 { 
+    public static void main(String[] args) { 
+        ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3))); 
+        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4, new ListNode(1)))); 
+        System.out.println(new Topic2().addTwoNumbers(l1, l2)); 
+    } 
+ 
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) { 
+        ListNode listNode = new ListNode(0); 
+        ListNode curListNode = listNode; 
+        boolean isCarry = false; 
+        while (true) { 
+            int sum = 0; 
+            if (isCarry) { 
+                sum = getVal(l1) + getVal(l2) + 1; 
+            } else { 
+                sum = getVal(l1) + getVal(l2); 
+            } 
+            if (sum > 9) { 
+                curListNode.val = sum - 10; 
+                isCarry = true; 
+            } else { 
+                curListNode.val = sum; 
+                isCarry = false; 
+            } 
+            l1 = l1 == null ? null : l1.next; 
+            l2 = l2 == null ? null : l2.next; 
+            if (l1 == null && l2 == null) { 
+                if (isCarry) { 
+                    curListNode.next = new ListNode(1); 
+                } 
+                break; 
+            } 
+            ListNode nextListNode = new ListNode(0); 
+            curListNode.next = nextListNode; 
+            curListNode = nextListNode; 
+        } 
+        return listNode; 
+ 
+    } 
+ 
+    private int getVal(ListNode listNode) { 
+        return listNode == null ? 0 : listNode.val; 
+    } 
+} 

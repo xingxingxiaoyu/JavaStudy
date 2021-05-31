@@ -1,8 +1,8 @@
-package art.bytecode;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
-@Retention(RetentionPolicy.CLASS)
-public @interface TestAnnotation {
-}
+package art.bytecode; 
+ 
+import java.lang.annotation.Retention; 
+import java.lang.annotation.RetentionPolicy; 
+ 
+@Retention(RetentionPolicy.CLASS) 
+public @interface TestAnnotation { 
+} 
